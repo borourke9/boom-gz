@@ -278,13 +278,13 @@ export default function HomePage() {
               <div
                 className="group block cursor-pointer relative"
                 onClick={() => handleCardClick(0)}
-                aria-label="View case study: CVX Electric"
+                aria-label="View case study: Electric"
               >
               <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-white dark:bg-[#0F1115] shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 transform-gpu ring-1 ring-black/5 dark:ring-white/10">
                 <div className="relative h-full">
                   <img
                     src="/electrician-working-on-electrical-panel.png"
-                    alt="CVX Electric project showcase"
+                    alt="Electric project showcase"
                     className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
@@ -298,7 +298,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="mt-3">
-                <h3 className="text-gray-900 font-semibold">CVX Electric</h3>
+                <h3 className="text-gray-900 font-semibold">Electric</h3>
                 <p className="text-sm text-gray-600">Website · Local SEO</p>
               </div>
             </div>
@@ -376,18 +376,20 @@ export default function HomePage() {
             className="font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-center -tracking-[0.02em] leading-[0.95] mb-12 text-gray-900"
             style={{ fontFamily: "Inter Tight, sans-serif" }}
           >
-            WHO WE SERVE
+            OUR SOLUTIONS
           </h2>
           <div className="relative bg-gray-900 rounded-2xl overflow-hidden shadow-2xl">
-            <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 hover:bg-white/30 transition-colors cursor-pointer">
-                  <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-                <p className="text-white/80 text-lg">Click to play video</p>
-              </div>
+            <div className="aspect-video">
+              <iframe 
+                src="https://player.vimeo.com/video/1114113118?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                width="100%" 
+                height="100%" 
+                frameBorder="0" 
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                referrerPolicy="strict-origin-when-cross-origin" 
+                title="copy_3BF3D8D5-F888-4889-9AE9-5F2202872269"
+                className="w-full h-full rounded-2xl"
+              />
             </div>
           </div>
           
