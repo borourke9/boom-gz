@@ -157,3 +157,34 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Full-bleed helper for footer */
+.full-bleed {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+/* iOS Tile animations and rendering */
+@keyframes ios-shimmer { 
+  0% { transform: translateX(-120%); } 
+  100% { transform: translateX(220%); } 
+}
+
+.animate-ios-shimmer { 
+  animation: ios-shimmer 1.2s ease-in-out; 
+  animation-play-state: paused; 
+}
+
+.group:hover .animate-ios-shimmer { 
+  animation-play-state: running; 
+}
+
+/* Improve rendering */
+.ios-tile { 
+  backface-visibility: hidden; 
+  transform: translateZ(0); 
+}
