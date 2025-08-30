@@ -5,6 +5,13 @@ import AnimatedCard from "../components/AnimatedCard"
 import ContactInfoCompact from "../components/ContactInfoCompact"
 import ServicesStrip from "../components/ServicesStrip"
 
+// GA4 type declaration
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 export default function HomePage() {
   const [scrollY, setScrollY] = useState(0)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -300,6 +307,7 @@ export default function HomePage() {
               <div className="mt-3">
                 <h3 className="text-gray-900 font-semibold">Electric</h3>
                 <p className="text-sm text-gray-600">Website · Local SEO</p>
+                <p className="text-xs text-green-600 dark:text-green-400 font-medium mt-1">+42% calls in 60 days</p>
               </div>
             </div>
             </AnimatedCard>
@@ -331,6 +339,7 @@ export default function HomePage() {
               <div className="mt-3">
                 <h3 className="text-gray-900 font-semibold">Boyne Country HVAC</h3>
                 <p className="text-sm text-gray-600">Website · Google Ads</p>
+                <p className="text-xs text-green-600 dark:text-green-400 font-medium mt-1">+67% qualified leads</p>
               </div>
             </div>
             </AnimatedCard>
@@ -362,6 +371,7 @@ export default function HomePage() {
               <div className="mt-3">
                 <h3 className="text-gray-900 font-semibold">Edgewater Dock & Cottage</h3>
                 <p className="text-sm text-gray-600">Website · GBP</p>
+                <p className="text-xs text-green-600 dark:text-green-400 font-medium mt-1">+89% local visibility</p>
               </div>
             </div>
             </AnimatedCard>
@@ -437,6 +447,10 @@ export default function HomePage() {
               method="POST"
               action="https://formspree.io/f/your-id"
               className="rounded-2xl bg-white dark:bg-[#0F1115] p-6 sm:p-8 ring-1 ring-black/5 dark:ring-white/10 shadow-sm"
+              onSubmit={(e) => {
+                // GA4 event tracking
+                window.gtag?.('event', 'generate_lead', { method: 'contact_form' });
+              }}
             >
               <div className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -601,6 +615,19 @@ export default function HomePage() {
                 {/* Anti-spam honeypot */}
                 <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
 
+                {/* Trust chips */}
+                <div className="flex flex-wrap gap-3 justify-center">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 text-xs font-medium">
+                    <span className="text-yellow-500">★</span> 4.9★ on Google
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 text-xs font-medium">
+                    ⚡ Response in &lt;24h
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 text-xs font-medium">
+                    👨‍💼 Owner-led
+                  </span>
+                </div>
+
                 <div>
                   <button
                     type="submit"
@@ -609,6 +636,7 @@ export default function HomePage() {
                     Send Message
                   </button>
                   <p className="mt-2 text-xs text-gray-500 dark:text-gray-400 text-center">We reply within 24 hours.</p>
+                  <p className="mt-1 text-xs text-gray-400 dark:text-gray-500 text-center">No long contracts. Start with a one-page plan.</p>
                 </div>
 
                 {/* Status messages */}
@@ -631,8 +659,58 @@ export default function HomePage() {
             NEXGEN
           </h2>
           <p className="text-xs opacity-70 mt-4">© 2025 NEXGEN. All rights reserved.</p>
+          <div className="mt-6">
+            <a 
+              href="/privacy" 
+              className="text-xs opacity-60 hover:opacity-100 transition-opacity underline"
+            >
+              Privacy Policy
+            </a>
+          </div>
         </div>
       </div>
+
+      {/* JSON-LD Structured Data */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"LocalBusiness",
+        "name":"NEXGEN",
+        "image":"https://www.nexgensites.com/og/og-cover.jpg",
+        "url":"https://www.nexgensites.com",
+        "telephone":"+1-XXX-XXX-XXXX",
+        "areaServed":{"@type":"AdministrativeArea","name":"Northern Michigan"},
+        "address":{"@type":"PostalAddress","addressRegion":"MI","addressCountry":"US"},
+        "sameAs":[ /* add socials if any */ ],
+        "makesOffer":[
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Websites"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Google Ads"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Local SEO / GBP"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"AI Answering"}}
+        ]
+      })}} />
+
+      {/* Video schema for your Vimeo section */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"VideoObject",
+        "name":"NEXGEN — Who We Serve",
+        "description":"Overview of how we help service businesses with websites, ads and AI.",
+        "thumbnailUrl":["https://www.nexgensites.com/images/who-we-serve-thumb.jpg"],
+        "uploadDate":"2025-08-28",
+        "publisher":{"@type":"Organization","name":"NEXGEN"},
+        "contentUrl":"https://player.vimeo.com/video/1114113118",
+        "embedUrl":"https://player.vimeo.com/video/1114113118"
+      })}} />
+
+      {/* Optional FAQ if you add an accordion on Contact */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"FAQPage",
+        "mainEntity":[
+          {"@type":"Question","name":"How soon will you reply?","acceptedAnswer":{"@type":"Answer","text":"Within 24 hours."}},
+          {"@type":"Question","name":"Do you work outside Northern Michigan?","acceptedAnswer":{"@type":"Answer","text":"Yes—remote friendly across the U.S."}}
+        ]
+      })}} />
     </div>
   )
 }
