@@ -6,3 +6,4 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: 'https://www.nexgensites.com/sitemap.xml',
   };
 }
+

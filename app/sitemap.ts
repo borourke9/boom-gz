@@ -8,3 +8,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://www.nexgensites.com/services', changeFrequency: 'monthly', priority: 0.8 },
   ];
 }
+

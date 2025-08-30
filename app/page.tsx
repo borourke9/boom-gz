@@ -84,8 +84,8 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="h-screen flex items-center justify-center relative">
-        <div className="text-center">
+      <section className="min-h-screen flex items-center justify-center relative px-4 sm:px-6 lg:px-8">
+        <div className="text-center w-full max-w-6xl">
           <style jsx>{`
             @keyframes nxg-bob { 
               0%{transform:translate(-50%,0)} 
@@ -102,7 +102,7 @@ export default function HomePage() {
             }
           `}</style>
           <h1
-            className="text-[12rem] md:text-[16rem] font-bold text-gray-900 -tracking-[0.05em] leading-none mb-8 transition-all duration-300 ease-out relative"
+            className="text-[8rem] sm:text-[10rem] md:text-[14rem] lg:text-[16rem] xl:text-[18rem] font-bold text-gray-900 -tracking-[0.05em] leading-none mb-8 transition-all duration-300 ease-out relative"
             style={{
               transform: `scale(${heroScale})`,
               opacity: heroOpacity,
@@ -113,7 +113,7 @@ export default function HomePage() {
             <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-gxI6Ot7u7beqbdhFe44zSRvHmmFQSp.png"
               alt="Cartoon character with laptop"
-              className="nxg-mascot absolute -top-2 md:-top-4 lg:-top-6 right-4 md:right-8 lg:right-12 w-16 md:w-20 lg:w-24 select-none drop-shadow-lg z-10 cursor-pointer hover:scale-110 transition-transform duration-200 pointer-events-auto"
+              className="nxg-mascot absolute -top-1 sm:-top-2 md:-top-4 lg:-top-6 right-2 sm:right-4 md:right-8 lg:right-12 w-12 sm:w-16 md:w-20 lg:w-24 select-none drop-shadow-lg z-10 cursor-pointer hover:scale-110 transition-transform duration-200 pointer-events-auto"
               style={{
                 transform: `scale(${heroScale})`,
                 opacity: heroOpacity,
@@ -125,17 +125,17 @@ export default function HomePage() {
             />
           </h1>
 
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto px-4 sm:px-0">
             We build fast, branded sites, run Google & Meta ads, and add AI responders—so more clicks turn into calls
             and jobs.
           </p>
 
-          <div className="flex gap-4 justify-center">
-            <button className="bg-gray-900 text-white px-8 py-4 rounded-2xl font-medium text-lg hover:bg-gray-800 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button className="bg-gray-900 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium text-base sm:text-lg hover:bg-gray-800 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 w-full sm:w-auto justify-center">
               <div className="w-2 h-2 bg-red-500 rounded-full"></div>
               Let's Talk
             </button>
-            <button className="border-2 border-gray-900 text-gray-900 px-8 py-4 rounded-2xl font-medium text-lg hover:bg-gray-900 hover:text-white transition-all duration-300 hover:scale-105">
+            <button className="border-2 border-gray-900 text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium text-base sm:text-lg hover:bg-gray-900 hover:text-white transition-all duration-300 hover:scale-105 w-full sm:w-auto">
               See Our Work
             </button>
           </div>
