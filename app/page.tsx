@@ -135,7 +135,7 @@ export default function HomePage() {
             <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-gxI6Ot7u7beqbdhFe44zSRvHmmFQSp.png"
               alt="Cartoon character with laptop"
-              className="nxg-mascot absolute -top-1 xs:-top-1 sm:-top-2 md:-top-4 lg:-top-6 right-1 xs:right-2 sm:right-4 md:right-8 lg:right-12 w-10 xs:w-12 sm:w-16 md:w-20 lg:w-24 select-none drop-shadow-lg z-10 cursor-pointer hover:scale-110 transition-transform duration-200 pointer-events-auto"
+              className="nxg-mascot absolute -top-1 xs:-top-1 sm:-top-2 md:-top-4 lg:-top-6 left-[40%] w-10 xs:w-12 sm:w-16 md:w-20 lg:w-24 select-none drop-shadow-lg z-10 cursor-pointer hover:scale-110 transition-transform duration-200 pointer-events-auto"
               style={{
                 transform: `scale(${heroScale})`,
                 opacity: heroOpacity,
