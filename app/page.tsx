@@ -131,11 +131,47 @@ export default function HomePage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="bg-gray-900 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium text-base sm:text-lg hover:bg-gray-800 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 w-full sm:w-auto justify-center">
-              <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+            <button 
+              onClick={() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }
+              }}
+              aria-label="Scroll to contact section to start a conversation"
+              className="bg-gray-900 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium text-base sm:text-lg hover:bg-gray-800 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 w-full sm:w-auto justify-center cursor-pointer active:scale-95 group focus:outline-none focus:ring-4 focus:ring-gray-900/20"
+            >
+              <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse group-hover:animate-none"></div>
               Let's Talk
             </button>
-            <button className="border-2 border-gray-900 text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium text-base sm:text-lg hover:bg-gray-900 hover:text-white transition-all duration-300 hover:scale-105 w-full sm:w-auto">
+            <button 
+              onClick={() => {
+                const workSection = document.getElementById('work');
+                if (workSection) {
+                  workSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  const workSection = document.getElementById('work');
+                  if (workSection) {
+                    workSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }
+              }}
+              aria-label="Scroll to work section to see our portfolio"
+              className="border-2 border-gray-900 text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium text-base sm:text-lg hover:bg-gray-900 hover:text-white transition-all duration-300 hover:scale-105 w-full sm:w-auto cursor-pointer active:scale-95 focus:outline-none focus:ring-4 focus:ring-gray-900/20"
+            >
               See Our Work
             </button>
           </div>
