@@ -84,8 +84,8 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative px-4 sm:px-6 lg:px-8">
-        <div className="text-center w-full max-w-6xl">
+      <section className="min-h-screen flex items-center justify-center relative px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div className="text-center w-full max-w-6xl mx-auto">
           <style jsx>{`
             @keyframes nxg-bob { 
               0%{transform:translate(-50%,0)} 
@@ -100,9 +100,31 @@ export default function HomePage() {
                 animation:none !important; 
               } 
             }
+            /* Custom breakpoint for very small devices */
+            @media (max-width: 475px) {
+              .hero-title {
+                font-size: 4rem !important;
+                line-height: 0.9 !important;
+                word-break: break-word !important;
+              }
+            }
+            @media (max-width: 375px) {
+              .hero-title {
+                font-size: 3.5rem !important;
+                line-height: 0.85 !important;
+                word-break: break-word !important;
+              }
+            }
+            @media (max-width: 320px) {
+              .hero-title {
+                font-size: 3rem !important;
+                line-height: 0.8 !important;
+                word-break: break-word !important;
+              }
+            }
           `}</style>
           <h1
-            className="text-[8rem] sm:text-[10rem] md:text-[14rem] lg:text-[16rem] xl:text-[18rem] font-bold text-gray-900 -tracking-[0.05em] leading-none mb-8 transition-all duration-300 ease-out relative"
+            className="hero-title text-[5rem] xs:text-[6rem] sm:text-[8rem] md:text-[12rem] lg:text-[16rem] xl:text-[18rem] font-bold text-gray-900 -tracking-[0.05em] leading-none mb-8 transition-all duration-300 ease-out relative break-words"
             style={{
               transform: `scale(${heroScale})`,
               opacity: heroOpacity,
@@ -113,7 +135,7 @@ export default function HomePage() {
             <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-gxI6Ot7u7beqbdhFe44zSRvHmmFQSp.png"
               alt="Cartoon character with laptop"
-              className="nxg-mascot absolute -top-1 sm:-top-2 md:-top-4 lg:-top-6 right-2 sm:right-4 md:right-8 lg:right-12 w-12 sm:w-16 md:w-20 lg:w-24 select-none drop-shadow-lg z-10 cursor-pointer hover:scale-110 transition-transform duration-200 pointer-events-auto"
+              className="nxg-mascot absolute -top-1 xs:-top-1 sm:-top-2 md:-top-4 lg:-top-6 right-1 xs:right-2 sm:right-4 md:right-8 lg:right-12 w-10 xs:w-12 sm:w-16 md:w-20 lg:w-24 select-none drop-shadow-lg z-10 cursor-pointer hover:scale-110 transition-transform duration-200 pointer-events-auto"
               style={{
                 transform: `scale(${heroScale})`,
                 opacity: heroOpacity,
