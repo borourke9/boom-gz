@@ -20,13 +20,13 @@ export default function ContactInfoCompact() {
 
       {/* Primary contact */}
       <div className="space-y-2.5">
-        <a href="mailto:hello@nexgensites.com" className="flex items-center gap-2.5 hover:underline">
+        <a href="mailto:bryce@nexgensites.com" className="flex items-center gap-2.5 hover:underline">
           <Mail className="h-4 w-4 opacity-70" />
-          <span className="font-medium">hello@nexgensites.com</span>
+          <span className="font-medium">bryce@nexgensites.com</span>
         </a>
-        <a href="tel:(XXX) XXX-XXXX" className="flex items-center gap-2.5 hover:underline">
+        <a href="tel:248-404-5768" className="flex items-center gap-2.5 hover:underline">
           <Phone className="h-4 w-4 opacity-70" />
-          <span className="font-medium">(XXX) XXX-XXXX</span>
+          <span className="font-medium">(248) 404-5768</span>
         </a>
         <p className="text-sm text-black/60 dark:text-white/60">
           Service area: <span className="font-medium text-black/80 dark:text-white/80">Northern Michigan</span>

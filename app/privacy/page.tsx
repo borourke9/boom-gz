@@ -20,9 +20,9 @@ export default function PrivacyPage() {
             
             <p className="text-gray-700 mb-6">
               If you have any questions about how we handle your data, please contact us at{' '}
-              <a href="mailto:hello@nexgensites.com" className="text-blue-600 hover:underline">
-                hello@nexgensites.com
-              </a>
+                      <a href="mailto:bryce@nexgensites.com" className="text-blue-600 hover:underline">
+          bryce@nexgensites.com
+        </a>
             </p>
             
             <p className="text-sm text-gray-500">
