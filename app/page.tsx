@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react"
 import AnimatedCard from "../components/AnimatedCard"
 import ContactInfoCompact from "../components/ContactInfoCompact"
-import ServicesStrip from "../components/ServicesStrip"
+import GlassPanel from "../components/GlassPanel"
+import ParallaxContainer from "../components/ParallaxContainer"
+import HoverVideo from "../components/HoverVideo"
 
 // GA4 type declaration
 declare global {
@@ -437,31 +439,117 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Who We Serve Video Section */}
-      <section className="py-20 px-6 bg-gray-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2
-            className="font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-center -tracking-[0.02em] leading-[0.95] mb-12 text-gray-900"
-            style={{ fontFamily: "Inter Tight, sans-serif" }}
-          >
+            {/* Our Solutions Section */}
+      <section id="solutions" className="relative mx-auto my-24 max-w-7xl px-4">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <p className="mb-2 text-xs tracking-[.2em] uppercase text-black/40">What We Do</p>
+          <h2 className="text-5xl md:text-6xl font-black -tracking-[0.02em] leading-[0.95] text-gray-900" style={{ fontFamily: "Inter Tight, sans-serif" }}>
             OUR SOLUTIONS
           </h2>
-          <div className="relative bg-gray-900 rounded-2xl overflow-hidden shadow-2xl">
-            <div className="aspect-video">
-              <iframe 
-                src="https://player.vimeo.com/video/1114113118?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-                width="100%" 
-                height="100%" 
-                frameBorder="0" 
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-                referrerPolicy="strict-origin-when-cross-origin" 
-                title="copy_3BF3D8D5-F888-4889-9AE9-5F2202872269"
-                className="w-full h-full rounded-2xl"
-              />
+        </div>
+
+        {/* Large Video Section */}
+        <div className="mb-16">
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-blue-600/8 via-blue-500/6 to-blue-400/4 p-8">
+            <div className="relative rounded-2xl overflow-hidden">
+              <div className="relative pt-[56.25%]">
+                <iframe
+                  src="https://player.vimeo.com/video/1114113118?autoplay=0&loop=1&muted=1&controls=1&background=0"
+                  className="absolute inset-0 w-full h-full"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                  title="NEXGEN Solutions Video"
+                />
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* Service Cards Grid */}
+        <div className="rounded-3xl border border-white/25 bg-white/18 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_30px_80px_-24px_rgba(0,0,0,0.35)] p-8 md:p-12">
+          {/* Inner glow overlay */}
+          <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-b from-white/14 via-transparent to-white/5" />
           
-          <ServicesStrip />
+          {/* Content */}
+          <div className="relative z-10">
+            <ParallaxContainer from={50} to={-50}>
+              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+                <div className="card-hover group rounded-2xl border border-white/20 bg-white/35 p-4 backdrop-blur-xl transition hover:border-white/30">
+                  <div className="relative overflow-hidden rounded-xl">
+                    <div className="relative pt-[56.25%]">
+                      <HoverVideo src="/video/websites.mp4" poster="/video/websites.jpg" />
+                    </div>
+                  </div>
+                  <h3 className="mt-4 text-sm font-semibold text-gray-900">Websites</h3>
+                  <p className="text-sm text-black/60 mt-2">Fast, branded sites that convert visitors into customers</p>
+                  <ul className="mt-2 flex flex-wrap gap-2 text-xs text-black/55">
+                    <li className="rounded-full bg-white/50 px-2.5 py-1">Under 2-week build</li>
+                    <li className="rounded-full bg-white/50 px-2.5 py-1">Mobile-first design</li>
+                  </ul>
+                  {/* Specular sweep overlay */}
+                  <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition">
+                    <div className="absolute -inset-x-20 -top-1/2 h-[200%] rotate-12 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                  </div>
+                </div>
+                
+                <div className="card-hover group rounded-2xl border border-white/20 bg-white/35 p-4 backdrop-blur-xl transition hover:border-white/30">
+                  <div className="relative overflow-hidden rounded-xl">
+                    <div className="relative pt-[56.25%]">
+                      {/* <SmartVideo src="/video/ads.mp4" poster="/video/ads.jpg" /> */}
+                    </div>
+                  </div>
+                  <h3 className="mt-4 text-sm font-semibold text-gray-900">Google Ads</h3>
+                  <p className="text-sm text-black/60 mt-2">Targeted PPC campaigns that drive qualified leads</p>
+                  <ul className="mt-2 flex flex-wrap gap-2 text-xs text-black/55">
+                    <li className="rounded-full bg-white/50 px-2.5 py-1">Avg +42% calls</li>
+                    <li className="rounded-full bg-white/50 px-2.5 py-1">ROAS tracking</li>
+                  </ul>
+                  {/* Specular sweep overlay */}
+                  <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition">
+                    <div className="absolute -inset-x-20 -top-1/2 h-[200%] rotate-12 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                  </div>
+                </div>
+                
+                <div className="card-hover group rounded-2xl border border-white/20 bg-white/35 p-4 backdrop-blur-xl transition hover:border-white/30">
+                  <div className="relative overflow-hidden rounded-xl">
+                    <div className="relative pt-[56.25%]">
+                      {/* <SmartVideo src="/video/ai.mp4" poster="/video/ai.jpg" /> */}
+                    </div>
+                  </div>
+                  <h3 className="mt-4 text-sm font-semibold text-gray-900">AI Solutions</h3>
+                  <p className="text-sm text-black/60 mt-2">Smart automation that never misses a lead</p>
+                  <ul className="mt-2 flex flex-wrap gap-2 text-xs text-black/55">
+                    <li className="rounded-full bg-white/50 px-2.5 py-1">24/7 lead capture</li>
+                    <li className="rounded-full bg-white/50 px-2.5 py-1">Auto follow-up</li>
+                  </ul>
+                  {/* Specular sweep overlay */}
+                  <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition">
+                    <div className="absolute -inset-x-20 -top-1/2 h-[200%] rotate-12 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                  </div>
+                </div>
+                
+                <div className="card-hover group rounded-2xl border border-white/20 bg-white/35 p-4 backdrop-blur-xl transition hover:border-white/30">
+                  <div className="relative overflow-hidden rounded-xl">
+                    <div className="relative pt-[56.25%]">
+                      <HoverVideo src="/video/seo.mp4" poster="/video/seo.jpg" />
+                    </div>
+                  </div>
+                  <h3 className="mt-4 text-sm font-semibold text-gray-900">Local SEO</h3>
+                  <p className="text-sm text-black/60 mt-2">Dominate local search and Google Business Profile</p>
+                  <ul className="mt-2 flex flex-wrap gap-2 text-xs text-black/55">
+                    <li className="rounded-full bg-white/50 px-2.5 py-1">Top 3 rankings</li>
+                    <li className="rounded-full bg-white/50 px-2.5 py-1">GBP optimization</li>
+                  </ul>
+                  {/* Specular sweep overlay */}
+                  <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition">
+                    <div className="absolute -inset-x-20 -top-1/2 h-[200%] rotate-12 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                  </div>
+                </div>
+              </div>
+            </ParallaxContainer>
+          </div>
         </div>
       </section>
 

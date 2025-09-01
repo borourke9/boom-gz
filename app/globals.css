@@ -188,3 +188,13 @@ body {
   backface-visibility: hidden; 
   transform: translateZ(0); 
 }
+
+/* Card hover effects */
+.card-hover { 
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s; 
+}
+
+.card-hover:hover { 
+  transform: translateY(-4px); 
+  box-shadow: 0 14px 40px -14px rgba(0,0,0,.35); 
+}
