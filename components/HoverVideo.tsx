@@ -29,6 +29,9 @@ export default function HoverVideo({
       className={className}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onError={(e) => console.error('Video error:', e)}
+      onLoadStart={() => console.log('Video loading:', src)}
+      onCanPlay={() => console.log('Video can play:', src)}
     >
       <source src={src} type="video/mp4" />
     </video>
