@@ -6,6 +6,7 @@ import ContactInfoCompact from "../components/ContactInfoCompact"
 import GlassPanel from "../components/GlassPanel"
 import ParallaxContainer from "../components/ParallaxContainer"
 import HoverVideo from "../components/HoverVideo"
+import VimeoHoverVideo from "../components/VimeoHoverVideo"
 import NexGenContactForm from "./components/NexGenContactForm"
 
 // GA4 type declaration
@@ -18,7 +19,6 @@ declare global {
 export default function HomePage() {
   const [scrollY, setScrollY] = useState(0)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [clickedCard, setClickedCard] = useState<number | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,10 +31,6 @@ export default function HomePage() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const handleCardClick = (cardIndex: number) => {
-    setClickedCard(cardIndex)
-    setTimeout(() => setClickedCard(null), 2000)
-  }
 
   const heroScale = Math.max(0.3, 1 - scrollY * 0.003)
   const heroOpacity = Math.max(0, 1 - scrollY * 0.005)
@@ -87,75 +83,24 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="text-center w-full max-w-6xl mx-auto">
-          <style jsx>{`
-            @keyframes nxg-bob { 
-              0%{transform:translate(-50%,0)} 
-              50%{transform:translate(-50%,-4px)} 
-              100%{transform:translate(-50%,0)} 
-            }
-            .nxg-mascot { 
-              animation: nxg-bob 3.6s ease-in-out infinite; 
-            }
-            @media (prefers-reduced-motion: reduce){ 
-              .nxg-mascot { 
-                animation:none !important; 
-              } 
-            }
-            /* Custom breakpoint for very small devices */
-            @media (max-width: 475px) {
-              .hero-title {
-                font-size: 4rem !important;
-                line-height: 0.9 !important;
-                word-break: break-word !important;
-              }
-            }
-            @media (max-width: 375px) {
-              .hero-title {
-                font-size: 3.5rem !important;
-                line-height: 0.85 !important;
-                word-break: break-word !important;
-              }
-            }
-            @media (max-width: 320px) {
-              .hero-title {
-                font-size: 3rem !important;
-                line-height: 0.8 !important;
-                word-break: break-word !important;
-              }
-            }
-          `}</style>
+      <section className="min-h-screen min-h-svh flex items-center justify-center relative px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-white to-gray-50 py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32">
+        <div className="flex flex-col items-center text-center w-full max-w-6xl mx-auto gap-4 md:gap-5 lg:gap-6 xl:gap-8 2xl:gap-8">
           <h1
-            className="hero-title text-[5rem] xs:text-[6rem] sm:text-[8rem] md:text-[12rem] lg:text-[16rem] xl:text-[18rem] font-bold text-gray-900 -tracking-[0.05em] leading-none mb-8 transition-all duration-300 ease-out relative break-words"
+            className="hero-title text-7xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-9xl 2xl:text-[14rem] font-extrabold tracking-tight bg-gradient-to-b from-gray-300 to-black bg-clip-text text-transparent leading-none mb-2 transition-all duration-300 ease-out relative break-words"
             style={{
               transform: `scale(${heroScale})`,
               opacity: heroOpacity,
             }}
-            data-mascot="on"
           >
             NEXGEN
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-gxI6Ot7u7beqbdhFe44zSRvHmmFQSp.png"
-              alt="Cartoon character with laptop"
-              className="nxg-mascot absolute -top-1 xs:-top-1 sm:-top-2 md:-top-4 lg:-top-6 left-[40%] w-10 xs:w-12 sm:w-16 md:w-20 lg:w-24 select-none drop-shadow-lg z-10 cursor-pointer hover:scale-110 transition-transform duration-200 pointer-events-auto"
-              style={{
-                transform: `scale(${heroScale})`,
-                opacity: heroOpacity,
-              }}
-              onClick={() => {
-                console.log("[v0] Mascot clicked!")
-                alert("Hello! I'm the NEXGEN mascot! 👋")
-              }}
-            />
           </h1>
 
-          <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto px-4 sm:px-0">
+          <p className="text-base leading-relaxed max-w-sm mt-2 opacity-90 sm:text-base md:text-lg md:mt-3 md:max-w-md lg:mt-4 lg:max-w-lg xl:mt-6 xl:max-w-xl text-gray-600">
             We build fast, branded sites, run Google & Meta ads, and add AI responders—so more clicks turn into calls
             and jobs.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col gap-4 justify-center items-center w-full max-w-sm mt-6 sm:gap-3 sm:max-w-xs lg:mt-8 xl:mt-10 2xl:mt-10">
             <button 
               onClick={() => {
                 const contactSection = document.getElementById('contact');
@@ -173,9 +118,9 @@ export default function HomePage() {
                 }
               }}
               aria-label="Scroll to contact section to start a conversation"
-              className="bg-gray-900 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium text-base sm:text-lg hover:bg-gray-800 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 w-full sm:w-auto justify-center cursor-pointer active:scale-95 group focus:outline-none focus:ring-4 focus:ring-gray-900/20"
+              className="bg-black text-white px-8 py-5 text-lg rounded-xl font-semibold hover:bg-red-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full md:py-4 md:text-base group relative overflow-hidden"
             >
-              <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse group-hover:animate-none"></div>
+              <div className="w-2 h-2 bg-red-500 rounded-full group-hover:scale-150 group-hover:bg-red-400 transition-all duration-300"></div>
               Let's Talk
             </button>
             <button 
@@ -195,7 +140,7 @@ export default function HomePage() {
                 }
               }}
               aria-label="Scroll to work section to see our portfolio"
-              className="border-2 border-gray-900 text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium text-base sm:text-lg hover:bg-gray-900 hover:text-white transition-all duration-300 hover:scale-105 w-full sm:w-auto cursor-pointer active:scale-95 focus:outline-none focus:ring-4 focus:ring-gray-900/20"
+              className="border border-gray-300 text-gray-700 px-8 py-5 text-lg rounded-xl font-semibold hover:bg-gray-50 transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full md:py-4 md:text-base"
             >
               See Our Work
             </button>
@@ -343,98 +288,62 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* Card 1 */}
             <AnimatedCard index={0}>
-              <div
-                className="group block cursor-pointer relative"
-                onClick={() => handleCardClick(0)}
-                aria-label="View case study: Electric"
-              >
-              <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-white dark:bg-[#0F1115] shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 transform-gpu ring-1 ring-black/5 dark:ring-white/10">
-                <div className="relative h-full">
-                  <img
-                    src="/electrician-working-on-electrical-panel.png"
-                    alt="Electric project showcase"
-                    className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                    <span className="text-white/90 text-sm">View case study →</span>
+              <div className="group block relative">
+                <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-white dark:bg-[#0F1115] shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 transform-gpu ring-1 ring-black/5 dark:ring-white/10">
+                  <div className="relative h-full">
+                    <HoverVideo
+                      src="/video/websites.mp4"
+                      poster="/electrician-working-on-electrical-panel.png"
+                      className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300"
+                    />
                   </div>
-                  {clickedCard === 0 && (
-                    <div className="absolute inset-0 bg-white/20 backdrop-blur-md flex items-center justify-center animate-pulse">
-                      <div className="text-white text-lg font-semibold">Loading...</div>
-                    </div>
-                  )}
+                </div>
+                <div className="mt-3">
+                  <h3 className="text-gray-900 font-semibold">Electric</h3>
+                  <p className="text-sm text-gray-600">Website · Local SEO</p>
+                  <p className="text-xs text-green-600 dark:text-green-400 font-medium mt-1">+42% calls in 60 days</p>
                 </div>
               </div>
-              <div className="mt-3">
-                <h3 className="text-gray-900 font-semibold">Electric</h3>
-                <p className="text-sm text-gray-600">Website · Local SEO</p>
-                <p className="text-xs text-green-600 dark:text-green-400 font-medium mt-1">+42% calls in 60 days</p>
-              </div>
-            </div>
             </AnimatedCard>
 
             {/* Card 2 */}
             <AnimatedCard index={1}>
-              <div
-                className="group block cursor-pointer relative"
-                onClick={() => handleCardClick(1)}
-                aria-label="View case study: Boyne Country HVAC"
-              >
-              <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-white dark:bg-[#0F1115] shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 transform-gpu ring-1 ring-black/5 dark:ring-white/10">
-                <div className="relative h-full">
-                  <img
-                    src="/images/hvac.png"
-                    alt="Boyne Country HVAC project showcase"
-                    className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                    <span className="text-white/90 text-sm">View case study →</span>
+              <div className="group block relative">
+                <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-white dark:bg-[#0F1115] shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 transform-gpu ring-1 ring-black/5 dark:ring-white/10">
+                  <div className="relative h-full">
+                    <img
+                      src="/images/hvac.png"
+                      alt="Boyne Country HVAC project showcase"
+                      className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300"
+                    />
                   </div>
-                  {clickedCard === 1 && (
-                    <div className="absolute inset-0 bg-white/20 backdrop-blur-md flex items-center justify-center animate-pulse">
-                      <div className="text-white text-lg font-semibold">Loading...</div>
-                    </div>
-                  )}
+                </div>
+                <div className="mt-3">
+                  <h3 className="text-gray-900 font-semibold">Boyne Country HVAC</h3>
+                  <p className="text-sm text-gray-600">Website · Google Ads</p>
+                  <p className="text-xs text-green-600 dark:text-green-400 font-medium mt-1">+67% qualified leads</p>
                 </div>
               </div>
-              <div className="mt-3">
-                <h3 className="text-gray-900 font-semibold">Boyne Country HVAC</h3>
-                <p className="text-sm text-gray-600">Website · Google Ads</p>
-                <p className="text-xs text-green-600 dark:text-green-400 font-medium mt-1">+67% qualified leads</p>
-              </div>
-            </div>
             </AnimatedCard>
 
             {/* Card 3 */}
             <AnimatedCard index={2}>
-              <div
-                className="group block cursor-pointer relative"
-                onClick={() => handleCardClick(2)}
-                aria-label="View case study: Edgewater Dock & Cottage"
-              >
-              <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-white dark:bg-[#0F1115] shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 transform-gpu ring-1 ring-black/5 dark:ring-white/10">
-                <div className="relative h-full">
-                  <img
-                    src="/wooden-dock-extending-into-lake-with-cottage-in-ba.png"
-                    alt="Edgewater Dock & Cottage project showcase"
-                    className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                    <span className="text-white/90 text-sm">View case study →</span>
+              <div className="group block relative">
+                <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-white dark:bg-[#0F1115] shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 transform-gpu ring-1 ring-black/5 dark:ring-white/10">
+                  <div className="relative h-full">
+                    <HoverVideo
+                      src="/video/websites.mp4"
+                      poster="/wooden-dock-extending-into-lake-with-cottage-in-ba.png"
+                      className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300"
+                    />
                   </div>
-                  {clickedCard === 2 && (
-                    <div className="absolute inset-0 bg-white/20 backdrop-blur-md flex items-center justify-center animate-pulse">
-                      <div className="text-white text-lg font-semibold">Loading...</div>
-                    </div>
-                  )}
+                </div>
+                <div className="mt-3">
+                  <h3 className="text-gray-900 font-semibold">Edgewater Dock & Cottage</h3>
+                  <p className="text-sm text-gray-600">Website · GBP</p>
+                  <p className="text-xs text-green-600 dark:text-green-400 font-medium mt-1">+89% local visibility</p>
                 </div>
               </div>
-              <div className="mt-3">
-                <h3 className="text-gray-900 font-semibold">Edgewater Dock & Cottage</h3>
-                <p className="text-sm text-gray-600">Website · GBP</p>
-                <p className="text-xs text-green-600 dark:text-green-400 font-medium mt-1">+89% local visibility</p>
-              </div>
-            </div>
             </AnimatedCard>
           </div>
         </div>
@@ -480,7 +389,7 @@ export default function HomePage() {
                 <div className="card-hover group rounded-2xl border border-white/20 bg-white/35 p-4 backdrop-blur-xl transition hover:border-white/30">
                   <div className="relative overflow-hidden rounded-xl">
                     <div className="relative pt-[56.25%]">
-                      <HoverVideo src="/video/websites.mp4" poster="/video/websites.jpg" />
+                      <VimeoHoverVideo videoId="1115946865" />
                     </div>
                   </div>
                   <h3 className="mt-4 text-sm font-semibold text-gray-900">Websites</h3>
@@ -534,7 +443,7 @@ export default function HomePage() {
                 <div className="card-hover group rounded-2xl border border-white/20 bg-white/35 p-4 backdrop-blur-xl transition hover:border-white/30">
                   <div className="relative overflow-hidden rounded-xl">
                     <div className="relative pt-[56.25%]">
-                      <HoverVideo src="/video/seo.mp4" poster="/video/seo.jpg" />
+                      <VimeoHoverVideo videoId="1115944190" />
                     </div>
                   </div>
                   <h3 className="mt-4 text-sm font-semibold text-gray-900">Local SEO</h3>

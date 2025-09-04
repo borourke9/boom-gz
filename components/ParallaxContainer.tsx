@@ -26,3 +26,5 @@ export default function ParallaxContainer({
 
   return <div ref={ref} className={className} style={{ willChange: "transform" }}>{children}</div>;
 }
+
+

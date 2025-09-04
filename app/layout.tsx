@@ -44,6 +44,9 @@ export default function RootLayout({
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date()); gtag('config', 'G-XXXX', { anonymize_ip: true });
         `}} />
+        
+        {/* Vimeo Player API */}
+        <script src="https://player.vimeo.com/api/player.js" />
       </head>
       <body className="min-h-screen flex flex-col bg-background text-foreground">
         <main className="flex-1">{children}</main>
