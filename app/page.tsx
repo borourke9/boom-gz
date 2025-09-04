@@ -157,7 +157,7 @@ export default function HomePage() {
 
       {/* Card Section */}
       <section
-        className="py-20 px-6 bg-gray-900 text-white"
+        className="py-20 px-6 bg-gradient-to-r from-gray-800 to-black text-white"
         style={{
           transform: cardSectionTransform,
           opacity: cardSectionOpacity,
@@ -385,76 +385,77 @@ export default function HomePage() {
           {/* Content */}
           <div className="relative z-10">
             <ParallaxContainer from={50} to={-50}>
-              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-                <div className="card-hover group rounded-2xl border border-white/20 bg-white/35 p-4 backdrop-blur-xl transition hover:border-white/30">
-                  <div className="relative overflow-hidden rounded-xl">
-                    <div className="relative pt-[56.25%]">
-                      <VimeoHoverVideo videoId="1115946865" />
+              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+                {/* Websites */}
+                <div className="group text-center">
+                  <div className="relative mb-6">
+                    <div className="w-20 h-20 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                      <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
                     </div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"></div>
                   </div>
-                  <h3 className="mt-4 text-sm font-semibold text-gray-900">Websites</h3>
-                  <p className="text-sm text-black/60 mt-2">Fast, branded sites that convert visitors into customers</p>
-                  <ul className="mt-2 flex flex-wrap gap-2 text-xs text-black/55">
-                    <li className="rounded-full bg-white/50 px-2.5 py-1">Under 2-week build</li>
-                    <li className="rounded-full bg-white/50 px-2.5 py-1">Mobile-first design</li>
-                  </ul>
-                  {/* Specular sweep overlay */}
-                  <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition">
-                    <div className="absolute -inset-x-20 -top-1/2 h-[200%] rotate-12 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">Websites</h3>
+                  <p className="text-gray-600 mb-4">Fast, branded sites that convert visitors into customers</p>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">Under 2-week build</span>
+                    <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">Mobile-first design</span>
                   </div>
                 </div>
-                
-                <div className="card-hover group rounded-2xl border border-white/20 bg-white/35 p-4 backdrop-blur-xl transition hover:border-white/30">
-                  <div className="relative overflow-hidden rounded-xl">
-                    <div className="relative pt-[56.25%]">
-                      {/* <SmartVideo src="/video/ads.mp4" poster="/video/ads.jpg" /> */}
+
+                {/* Google Ads */}
+                <div className="group text-center">
+                  <div className="relative mb-6">
+                    <div className="w-20 h-20 mx-auto bg-gradient-to-br from-green-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                      <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                      </svg>
                     </div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"></div>
                   </div>
-                  <h3 className="mt-4 text-sm font-semibold text-gray-900">Google Ads</h3>
-                  <p className="text-sm text-black/60 mt-2">Targeted PPC campaigns that drive qualified leads</p>
-                  <ul className="mt-2 flex flex-wrap gap-2 text-xs text-black/55">
-                    <li className="rounded-full bg-white/50 px-2.5 py-1">Avg +42% calls</li>
-                    <li className="rounded-full bg-white/50 px-2.5 py-1">ROAS tracking</li>
-                  </ul>
-                  {/* Specular sweep overlay */}
-                  <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition">
-                    <div className="absolute -inset-x-20 -top-1/2 h-[200%] rotate-12 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">Google Ads</h3>
+                  <p className="text-gray-600 mb-4">Targeted PPC campaigns that drive qualified leads</p>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    <span className="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Avg +42% calls</span>
+                    <span className="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">ROAS tracking</span>
                   </div>
                 </div>
-                
-                <div className="card-hover group rounded-2xl border border-white/20 bg-white/35 p-4 backdrop-blur-xl transition hover:border-white/30">
-                  <div className="relative overflow-hidden rounded-xl">
-                    <div className="relative pt-[56.25%]">
-                      {/* <SmartVideo src="/video/ai.mp4" poster="/video/ai.jpg" /> */}
+
+                {/* AI Solutions */}
+                <div className="group text-center">
+                  <div className="relative mb-6">
+                    <div className="w-20 h-20 mx-auto bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                      <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                      </svg>
                     </div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"></div>
                   </div>
-                  <h3 className="mt-4 text-sm font-semibold text-gray-900">AI Solutions</h3>
-                  <p className="text-sm text-black/60 mt-2">Smart automation that never misses a lead</p>
-                  <ul className="mt-2 flex flex-wrap gap-2 text-xs text-black/55">
-                    <li className="rounded-full bg-white/50 px-2.5 py-1">24/7 lead capture</li>
-                    <li className="rounded-full bg-white/50 px-2.5 py-1">Auto follow-up</li>
-                  </ul>
-                  {/* Specular sweep overlay */}
-                  <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition">
-                    <div className="absolute -inset-x-20 -top-1/2 h-[200%] rotate-12 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">AI Solutions</h3>
+                  <p className="text-gray-600 mb-4">Smart automation that never misses a lead</p>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    <span className="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">24/7 lead capture</span>
+                    <span className="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">Auto follow-up</span>
                   </div>
                 </div>
-                
-                <div className="card-hover group rounded-2xl border border-white/20 bg-white/35 p-4 backdrop-blur-xl transition hover:border-white/30">
-                  <div className="relative overflow-hidden rounded-xl">
-                    <div className="relative pt-[56.25%]">
-                      <VimeoHoverVideo videoId="1115944190" />
+
+                {/* Local SEO */}
+                <div className="group text-center">
+                  <div className="relative mb-6">
+                    <div className="w-20 h-20 mx-auto bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                      <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
                     </div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"></div>
                   </div>
-                  <h3 className="mt-4 text-sm font-semibold text-gray-900">Local SEO</h3>
-                  <p className="text-sm text-black/60 mt-2">Dominate local search and Google Business Profile</p>
-                  <ul className="mt-2 flex flex-wrap gap-2 text-xs text-black/55">
-                    <li className="rounded-full bg-white/50 px-2.5 py-1">Top 3 rankings</li>
-                    <li className="rounded-full bg-white/50 px-2.5 py-1">GBP optimization</li>
-                  </ul>
-                  {/* Specular sweep overlay */}
-                  <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition">
-                    <div className="absolute -inset-x-20 -top-1/2 h-[200%] rotate-12 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">Local SEO</h3>
+                  <p className="text-gray-600 mb-4">Dominate local search and Google Business Profile</p>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Top 3 rankings</span>
+                    <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">GBP optimization</span>
                   </div>
                 </div>
               </div>
