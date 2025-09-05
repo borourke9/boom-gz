@@ -82,6 +82,19 @@ export default function HomePage() {
         </div>
       </nav>
 
+      {/* Floating Call Now Button - Mobile Only */}
+      {isScrolled && (
+        <div className="fixed right-4 top-1/2 -translate-y-1/2 z-40 md:hidden">
+          <a
+            href="tel:+12484045768"
+            className="group flex items-center gap-2 bg-white/90 backdrop-blur-md border border-white/20 rounded-full px-4 py-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+          >
+            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+            <span className="text-sm font-semibold text-gray-800">Call Now</span>
+          </a>
+        </div>
+      )}
+
       {/* Hero Section */}
       <section className="min-h-screen min-h-svh flex items-center justify-center relative px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-white to-gray-50 py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32">
         <div className="flex flex-col items-center text-center w-full max-w-6xl mx-auto gap-4 md:gap-5 lg:gap-6 xl:gap-8 2xl:gap-8">
