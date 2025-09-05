@@ -4,12 +4,30 @@ import { useState } from "react";
 export default function NexGenContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "err">("idle");
 
+  function formatWebsiteUrl(url: string): string {
+    if (!url.trim()) return "";
+    
+    // If it already has a protocol, return as is
+    if (url.startsWith("http://") || url.startsWith("https://")) {
+      return url;
+    }
+    
+    // Add https:// if no protocol is present
+    return `https://${url}`;
+  }
+
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("sending");
 
     const form = e.currentTarget;
     const fd = new FormData(form);
+
+    // Format website URL if provided
+    const website = fd.get("website") as string;
+    if (website) {
+      fd.set("website", formatWebsiteUrl(website));
+    }
 
     const res = await fetch("https://formspree.io/f/xwpnrboe", {
       method: "POST",
@@ -103,10 +121,10 @@ export default function NexGenContactForm() {
           Website
         </label>
         <input
-          type="url"
+          type="text"
           id="website"
           name="website"
-          placeholder="Website"
+          placeholder="example.com (optional)"
           className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:border-transparent dark:bg-gray-800 dark:text-white"
         />
       </div>

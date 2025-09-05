@@ -226,11 +226,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Work / Case Studies Section */}
+      {/* Featured Work Section */}
       <section
         id="work"
         aria-labelledby="work-heading"
-        className="py-16 sm:py-20 lg:py-24 px-6 bg-white"
+        className="w-full py-16 bg-white"
         style={{
           transform: servicesTransform,
           opacity: servicesOpacity,
@@ -238,115 +238,39 @@ export default function HomePage() {
           perspective: "1000px",
         }}
       >
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header block */}
-          <div className="text-center md:text-left mb-10">
-            <div className="uppercase tracking-[0.2em] text-sm text-black/50 dark:text-white/60 mb-4">Work</div>
-            <div className="relative">
-              <h2
-                id="work-heading"
-                className="font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-center -tracking-[0.02em] leading-[0.95] mb-5"
-                style={{ fontFamily: "Inter Tight, sans-serif" }}
-              >
-                OUR WORK
-              </h2>
-              {/* Scribble accent */}
-              <svg
-                className="absolute -top-6 left-1/2 -translate-x-[42%] hidden md:block opacity-90"
-                width="120"
-                height="20"
-                viewBox="0 0 120 20"
-                fill="none"
-              >
-                <path
-                  d="M10 15c20-8 40-2 60-10s40 2 50-5"
-                  stroke="#E24A3B"
-                  strokeWidth="2"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </div>
-            <p className="text-base sm:text-lg text-gray-600 max-w-[70ch] mx-auto text-center">
-              A selection of projects showing how we design, build, and grow service businesses with websites, ads, and
-              AI.
-            </p>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 md:px-0">
+          <h2
+            id="work-heading"
+            className="text-4xl font-bold mb-10 text-center"
+          >
+            Featured Work
+          </h2>
+        </div>
 
-          {/* Filters */}
-          <div className="flex justify-center gap-3 mb-10">
-            <span className="rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-2 text-sm">
-              All
-            </span>
-            <span className="rounded-full border border-black/10 dark:border-white/15 px-4 py-2 text-sm">Web</span>
-            <span className="rounded-full border border-black/10 dark:border-white/15 px-4 py-2 text-sm">SEO</span>
-            <span className="rounded-full border border-black/10 dark:border-white/15 px-4 py-2 text-sm">Ads</span>
-            <span className="rounded-full border border-black/10 dark:border-white/15 px-4 py-2 text-sm">AI</span>
-          </div>
-
-          {/* Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {/* Card 1 */}
-            <AnimatedCard index={0}>
-              <div className="group block relative">
-                <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-white dark:bg-[#0F1115] shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 transform-gpu ring-1 ring-black/5 dark:ring-white/10">
-                  <div className="relative h-full">
-                    <HoverVideo
-                      src="/video/websites.mp4"
-                      poster="/electrician-working-on-electrical-panel.png"
-                      className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300"
-                    />
-                  </div>
-                </div>
-                <div className="mt-3">
-                  <h3 className="text-gray-900 font-semibold">Electric</h3>
-                  <p className="text-sm text-gray-600">Website · Local SEO</p>
-                  <p className="text-xs text-green-600 dark:text-green-400 font-medium mt-1">+42% calls in 60 days</p>
-                </div>
-              </div>
-            </AnimatedCard>
-
-            {/* Card 2 */}
-            <AnimatedCard index={1}>
-              <div className="group block relative">
-                <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-white dark:bg-[#0F1115] shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 transform-gpu ring-1 ring-black/5 dark:ring-white/10">
-                  <div className="relative h-full">
-                    <img
-                      src="/images/hvac.png"
-                      alt="Boyne Country HVAC project showcase"
-                      className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300"
-                    />
-                  </div>
-                </div>
-                <div className="mt-3">
-                  <h3 className="text-gray-900 font-semibold">Boyne Country HVAC</h3>
-                  <p className="text-sm text-gray-600">Website · Google Ads</p>
-                  <p className="text-xs text-green-600 dark:text-green-400 font-medium mt-1">+67% qualified leads</p>
-                </div>
-              </div>
-            </AnimatedCard>
-
-            {/* Card 3 */}
-            <AnimatedCard index={2}>
-              <div className="group block relative">
-                <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-white dark:bg-[#0F1115] shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 transform-gpu ring-1 ring-black/5 dark:ring-white/10">
-                  <div className="relative h-full">
-                    <HoverVideo
-                      src="/video/websites.mp4"
-                      poster="/wooden-dock-extending-into-lake-with-cottage-in-ba.png"
-                      className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300"
-                    />
-                  </div>
-                </div>
-                <div className="mt-3">
-                  <h3 className="text-gray-900 font-semibold">Edgewater Dock & Cottage</h3>
-                  <p className="text-sm text-gray-600">Website · GBP</p>
-                  <p className="text-xs text-green-600 dark:text-green-400 font-medium mt-1">+89% local visibility</p>
-                </div>
-              </div>
-            </AnimatedCard>
+        {/* Large Video Block */}
+        <div className="mx-auto w-full max-w-[1600px] px-4 md:px-8 xl:px-14 mb-8">
+          <div className="aspect-[16/9] rounded-2xl lg:rounded-3xl shadow-xl ring-1 ring-black/5 overflow-hidden relative">
+            <VimeoHoverVideo videoId="1116178377" />
           </div>
         </div>
+
+        {/* Two Column Grid with Gutters */}
+        <div className="mx-auto w-full max-w-[1600px] px-4 md:px-8 xl:px-14 mt-10 md:mt-12 xl:mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 xl:gap-16">
+            {/* Video 2 */}
+            <div className="aspect-[9/16] rounded-2xl lg:rounded-3xl shadow-xl ring-1 ring-black/5 overflow-hidden relative">
+              <VimeoHoverVideo videoId="1116184952" />
+            </div>
+
+            {/* Video 3 */}
+            <div className="aspect-[9/16] rounded-2xl lg:rounded-3xl shadow-xl ring-1 ring-black/5 overflow-hidden relative">
+              <VimeoHoverVideo videoId="1116032411" />
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Spacing */}
+        <div className="pb-16 md:pb-20"></div>
       </section>
 
             {/* Our Solutions Section */}
