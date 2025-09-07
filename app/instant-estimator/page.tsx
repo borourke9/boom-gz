@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import EstimatorNav from "@/components/EstimatorNav";
-import VimeoHoverVideo from "@/components/VimeoHoverVideo";
 
 export default function InstantEstimatorPage() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,16 +35,26 @@ export default function InstantEstimatorPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+              <a 
+                href="/#contact" 
+                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl inline-block text-center"
+              >
                 Try Live Demo
-              </button>
+              </a>
             </div>
           </div>
           
           {/* Hero Video */}
           <div className="relative max-w-4xl mx-auto">
             <div className="relative aspect-video rounded-2xl shadow-2xl overflow-hidden bg-gray-100">
-              <VimeoHoverVideo videoId="1116473957" />
+              <iframe
+                src="https://player.vimeo.com/video/1116473957?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=0&muted=0&loop=1&controls=1&background=0"
+                frameBorder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                className="absolute inset-0 w-full h-full rounded-xl"
+                title="Instant Estimator Demo"
+              />
             </div>
           </div>
         </div>
