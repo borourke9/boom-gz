@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import EstimatorNav from "@/components/EstimatorNav";
+import VimeoHoverVideo from "@/components/VimeoHoverVideo";
 
 export default function InstantEstimatorPage() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -233,13 +234,11 @@ export default function InstantEstimatorPage() {
               </div>
             </div>
             
-            {/* Center Image */}
+            {/* Center Video */}
             <div className="flex justify-center">
-              <img 
-                src="/images/estimator_mockup.webp" 
-                alt="Instant Estimator interface mockup" 
-                className="rounded-2xl shadow-2xl max-w-full h-auto"
-              />
+              <div className="relative w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden bg-gray-100" style={{paddingTop: '118.98%'}}>
+                <VimeoHoverVideo videoId="1116491693" />
+              </div>
             </div>
             
             {/* Right Features */}
