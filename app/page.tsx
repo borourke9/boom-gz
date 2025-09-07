@@ -82,19 +82,6 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* Floating Call Now Button - Mobile Only */}
-      {isScrolled && (
-        <div className="fixed right-4 top-1/2 -translate-y-1/2 z-40 md:hidden">
-          <a
-            href="tel:+12484045768"
-            className="group flex items-center gap-2 bg-white/90 backdrop-blur-md border border-white/20 rounded-full px-4 py-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-          >
-            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-            <span className="text-sm font-semibold text-gray-800">Call Now</span>
-          </a>
-        </div>
-      )}
-
       {/* Floating Instant Estimator Button - All Devices */}
       {isScrolled && (
         <div className="fixed left-4 top-1/2 -translate-y-1/2 z-40">
@@ -214,7 +201,7 @@ export default function HomePage() {
             >
               <div className="absolute top-6 left-6 w-2 h-2 bg-gray-900 rounded-full"></div>
               <div className="mt-12">
-                <h3 className="text-4xl font-bold text-red-500 mb-4">DISCOVERY CALL</h3>
+                <h3 className="text-4xl font-bold text-blue-500 mb-4">DISCOVERY CALL</h3>
                 <p className="text-gray-700">
                   We analyze your business and create a custom strategy tailored to your goals.
                 </p>
@@ -229,9 +216,9 @@ export default function HomePage() {
                 transition: "transform 0.1s ease-out, opacity 0.1s ease-out",
               }}
             >
-              <div className="absolute top-6 left-6 w-2 h-2 bg-red-500 rounded-full"></div>
+              <div className="absolute top-6 left-6 w-2 h-2 bg-blue-500 rounded-full"></div>
               <div className="mt-12">
-                <h3 className="text-4xl font-bold text-red-500 mb-4">SYSTEM BUILD</h3>
+                <h3 className="text-4xl font-bold text-blue-500 mb-4">SYSTEM BUILD</h3>
                 <p className="text-gray-300">We build your complete growth system with tracking, site, SEO, and ads.</p>
               </div>
             </div>
@@ -246,7 +233,7 @@ export default function HomePage() {
             >
               <div className="absolute top-6 left-6 w-2 h-2 bg-gray-900 rounded-full"></div>
               <div className="mt-12">
-                <h3 className="text-4xl font-bold text-red-500 mb-4">ONGOING OPTIMIZATION</h3>
+                <h3 className="text-4xl font-bold text-blue-500 mb-4">ONGOING OPTIMIZATION</h3>
                 <p className="text-gray-700">We continuously monitor and scale to maximize performance.</p>
               </div>
             </div>
@@ -459,7 +446,7 @@ export default function HomePage() {
       </section>
 
       {/* NEXGEN Text Section */}
-      <div className="w-screen bg-black text-white py-20">
+      <div className="w-screen bg-black text-white py-20 -mx-4 sm:-mx-6 md:mx-0 overflow-x-hidden">
         <div className="text-center">
           <h2 className="font-['Inter_Tight'] font-black tracking-tight leading-[0.75] text-[20vmin] md:text-[18vmin] lg:text-[16vmin] text-white">
             NEXGEN
