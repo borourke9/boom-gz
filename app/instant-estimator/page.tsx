@@ -91,7 +91,7 @@ export default function InstantEstimatorPage() {
             </div>
             <div className="flex justify-center">
               <img 
-                src="/images/heropic.png" 
+                src="/images/estimator_mockup.webp" 
                 alt="Service professional using Instant Estimator" 
                 className="rounded-xl shadow-xl max-w-full h-auto"
               />
@@ -149,7 +149,7 @@ export default function InstantEstimatorPage() {
             <div className="flex justify-center">
               <div className="relative">
                 <img 
-                  src="/images/form.jpg" 
+                  src="/images/form.webp" 
                   alt="Instant Estimator form interface" 
                   className="rounded-xl shadow-xl max-w-full h-auto object-contain"
                 />
@@ -227,7 +227,7 @@ export default function InstantEstimatorPage() {
             {/* Center Image */}
             <div className="flex justify-center">
               <img 
-                src="/images/estimator-hvac-02.png" 
+                src="/images/estimator_mockup.webp" 
                 alt="Instant Estimator interface mockup" 
                 className="rounded-2xl shadow-2xl max-w-full h-auto"
               />
