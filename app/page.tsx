@@ -95,9 +95,25 @@ export default function HomePage() {
         </div>
       )}
 
+      {/* Floating Instant Estimator Button - All Devices */}
+      {isScrolled && (
+        <div className="fixed left-4 top-1/2 -translate-y-1/2 z-40">
+          <a
+            href="/instant-estimator"
+            className="group flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full px-6 py-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+            <span className="hidden sm:inline">Instant Estimator</span>
+            <span className="sm:hidden">Estimator</span>
+          </a>
+        </div>
+      )}
+
       {/* Hero Section */}
-      <section className="min-h-screen min-h-svh flex items-center justify-center relative px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-white to-gray-50 py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32">
-        <div className="flex flex-col items-center text-center w-full max-w-6xl mx-auto gap-4 md:gap-5 lg:gap-6 xl:gap-8 2xl:gap-8">
+      <section className="min-h-screen min-h-svh flex items-center justify-center relative px-0 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-white to-gray-50 py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32">
+        <div className="flex flex-col items-center text-center w-full max-w-6xl mx-auto gap-4 md:gap-5 lg:gap-6 xl:gap-8 2xl:gap-8 px-4 sm:px-0">
           <h1
             className="hero-title text-7xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-9xl 2xl:text-[14rem] font-extrabold tracking-tight bg-gradient-to-b from-gray-300 to-black bg-clip-text text-transparent leading-none mb-2 transition-all duration-300 ease-out relative break-words"
             style={{
@@ -109,8 +125,7 @@ export default function HomePage() {
           </h1>
 
           <p className="text-base leading-relaxed max-w-sm mt-2 opacity-90 sm:text-base md:text-lg md:mt-3 md:max-w-md lg:mt-4 lg:max-w-lg xl:mt-6 xl:max-w-xl text-gray-600">
-            We build fast, branded sites, run Google & Meta ads, and add AI responders—so more clicks turn into calls
-            and jobs.
+            NEXGEN helps service businesses scale with conversion-focused websites, ad campaigns that generate consistent leads, and AI responders that close the gap between clicks and customers.
           </p>
 
           <div className="flex flex-col gap-4 justify-center items-center w-full max-w-sm mt-6 sm:gap-3 sm:max-w-xs lg:mt-8 xl:mt-10 2xl:mt-10">
@@ -131,9 +146,9 @@ export default function HomePage() {
                 }
               }}
               aria-label="Scroll to contact section to start a conversation"
-              className="bg-black text-white px-8 py-5 text-lg rounded-xl font-semibold hover:bg-red-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full md:py-4 md:text-base group relative overflow-hidden"
+              className="bg-black text-white px-8 py-5 text-lg rounded-xl font-semibold hover:bg-blue-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full md:py-4 md:text-base group relative overflow-hidden"
             >
-              <div className="w-2 h-2 bg-red-500 rounded-full group-hover:scale-150 group-hover:bg-red-400 transition-all duration-300"></div>
+              <div className="w-2 h-2 bg-blue-500 rounded-full group-hover:scale-150 group-hover:bg-blue-400 transition-all duration-300"></div>
               Let's Talk
             </button>
             <button 
