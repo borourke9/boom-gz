@@ -237,7 +237,7 @@ export default function InstantEstimatorPage() {
             {/* Center Video */}
             <div className="flex justify-center">
               <div className="relative w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden bg-gray-100" style={{paddingTop: '118.98%'}}>
-                <VimeoHoverVideo videoId="1116491693" />
+                <VimeoHoverVideo videoId="1116491693" showPlayButton={true} />
               </div>
             </div>
             
@@ -354,13 +354,13 @@ export default function InstantEstimatorPage() {
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
             Join hundreds of service businesses already using our Instant Estimator to capture more qualified leads and close more deals.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+          <div className="flex justify-center">
+            <a 
+              href="/#contact" 
+              className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl inline-block"
+            >
               Schedule Demo
-            </button>
-            <button className="px-8 py-4 border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-300 hover:scale-105">
-              Learn More
-            </button>
+            </a>
           </div>
         </div>
       </section>

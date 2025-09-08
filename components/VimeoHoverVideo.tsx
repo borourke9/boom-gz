@@ -1,11 +1,19 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
-export default function VimeoHoverVideo({ videoId }: { videoId: string }) {
+export default function VimeoHoverVideo({ videoId, showPlayButton = false }: { videoId: string; showPlayButton?: boolean }) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const playerRef = useRef<any>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
     // Load Vimeo Player API if not already loaded
     if (typeof window !== 'undefined' && !window.Vimeo) {
       const script = document.createElement('script');
@@ -21,6 +29,10 @@ export default function VimeoHoverVideo({ videoId }: { videoId: string }) {
     function initializePlayer() {
       if (iframeRef.current && window.Vimeo) {
         playerRef.current = new window.Vimeo.Player(iframeRef.current);
+        
+        // Listen for play/pause events
+        playerRef.current.on('play', () => setIsPlaying(true));
+        playerRef.current.on('pause', () => setIsPlaying(false));
       }
     }
 
@@ -29,10 +41,10 @@ export default function VimeoHoverVideo({ videoId }: { videoId: string }) {
         playerRef.current.destroy();
       }
     };
-  }, [videoId]);
+  }, [videoId, isClient]);
 
   const handleMouseEnter = () => {
-    if (playerRef.current) {
+    if (playerRef.current && !showPlayButton) {
       playerRef.current.play().catch((error: any) => {
         console.log('Vimeo play error:', error);
       });
@@ -40,12 +52,28 @@ export default function VimeoHoverVideo({ videoId }: { videoId: string }) {
   };
 
   const handleMouseLeave = () => {
-    if (playerRef.current) {
+    if (playerRef.current && !showPlayButton) {
       playerRef.current.pause().catch((error: any) => {
         console.log('Vimeo pause error:', error);
       });
     }
   };
+
+  const handlePlayClick = () => {
+    if (playerRef.current) {
+      playerRef.current.play().catch((error: any) => {
+        console.log('Vimeo play error:', error);
+      });
+    }
+  };
+
+  if (!isClient) {
+    return (
+      <div className="absolute inset-0 w-full h-full bg-gray-100 flex items-center justify-center rounded-xl">
+        <p className="text-gray-500">Loading video...</p>
+      </div>
+    );
+  }
 
   return (
     <div 
@@ -62,6 +90,20 @@ export default function VimeoHoverVideo({ videoId }: { videoId: string }) {
         className="absolute inset-0 w-full h-full rounded-xl"
         title="seo copy"
       />
+      
+      {/* Play Button Overlay - only show when showPlayButton is true and not playing */}
+      {showPlayButton && !isPlaying && (
+        <div 
+          className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-all duration-300 cursor-pointer"
+          onClick={handlePlayClick}
+        >
+          <div className="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300">
+            <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
