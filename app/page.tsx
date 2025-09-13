@@ -8,6 +8,7 @@ import ParallaxContainer from "../components/ParallaxContainer"
 import HoverVideo from "../components/HoverVideo"
 import VimeoHoverVideo from "../components/VimeoHoverVideo"
 import NexGenContactForm from "./components/NexGenContactForm"
+import Logo3DCanvas from "../components/Logo3DCanvas"
 
 // GA4 type declaration
 declare global {
@@ -114,14 +115,16 @@ export default function HomePage() {
               background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 70%)',
             }}
           >
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl">
-                  <span className="text-white font-bold text-6xl">N</span>
-                </div>
-                <p className="text-gray-600 text-lg font-medium">NexGen Sites</p>
-              </div>
-            </div>
+            <Logo3DCanvas
+              className="w-full h-full"
+              scale={1}
+              position={[0, 0, 0]}
+              rotation={[0, 0, 0]}
+              autoRotate={true}
+              rotationSpeed={0.003}
+              enableControls={false}
+              enableEnvironment={true}
+            />
           </div>
         </div>
 

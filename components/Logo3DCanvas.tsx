@@ -3,6 +3,7 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Environment } from '@react-three/drei';
 import Logo3D from './Logo3D';
+import { useState, useEffect } from 'react';
 
 interface Logo3DCanvasProps {
   className?: string;
@@ -25,12 +26,58 @@ export default function Logo3DCanvas({
   enableControls = false,
   enableEnvironment = true
 }: Logo3DCanvasProps) {
+  const [hasError, setHasError] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Error boundary for Canvas
+  const handleCanvasError = (error: Error) => {
+    console.error('Canvas error:', error);
+    setHasError(true);
+  };
+
+  // Only render on client side to avoid SSR issues
+  if (!isClient) {
+    return (
+      <div className={className}>
+        <div className="w-full h-full flex items-center justify-center">
+          <div className="text-center">
+            <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl">
+              <span className="text-white font-bold text-6xl">N</span>
+            </div>
+            <p className="text-gray-600 text-lg font-medium">NexGen Sites</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // If there's an error, show fallback
+  if (hasError) {
+    return (
+      <div className={className}>
+        <div className="w-full h-full flex items-center justify-center">
+          <div className="text-center">
+            <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl">
+              <span className="text-white font-bold text-6xl">N</span>
+            </div>
+            <p className="text-gray-600 text-lg font-medium">NexGen Sites</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={className}>
       <Canvas
         camera={{ position: [0, 0, 5], fov: 50 }}
         style={{ background: 'transparent' }}
         performance={{ min: 0.5 }}
+        onError={handleCanvasError}
       >
         {enableEnvironment && <Environment preset="studio" />}
         
