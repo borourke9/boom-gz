@@ -24,4 +24,11 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts*.mp4
+next-env.d.ts
+
+# Large files
+public/*.png
+public/video/*.mp4
+public/images/serviceguy.png
+public/images/form.jpg
+public/logo.glb
