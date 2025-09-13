@@ -100,7 +100,7 @@ export default function HomePage() {
       )}
 
       {/* Hero Section */}
-      <section className="min-h-screen min-h-svh flex items-center justify-center relative px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-sky-100 to-blue-100">
+      <section className="min-h-screen min-h-svh flex items-center justify-center relative px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-gray-100 to-gray-200">
         {/* 3D Logo Background Layer - Large and Behind Everything */}
         <div 
           className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
