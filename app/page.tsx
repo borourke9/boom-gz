@@ -58,25 +58,11 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Fixed Navigation Bar */}
-      <nav
-        className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-200 transition-opacity duration-300"
-        style={{ opacity: navOpacity }}
-      >
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-center relative">
-            <div
-              className="text-2xl font-bold text-gray-900 transition-opacity duration-500"
-              style={{ opacity: navLogoOpacity }}
-            >
+          <div className="flex items-center justify-center">
+            <div className="text-2xl font-bold text-gray-900">
               NEXGEN
-            </div>
-            <div className="hidden md:flex space-x-8 absolute right-0">
-              <a href="#work" className="text-gray-600 hover:text-gray-900 transition-colors">
-                Work
-              </a>
-              <a href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors">
-                Contact
-              </a>
             </div>
           </div>
         </div>
