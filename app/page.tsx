@@ -99,42 +99,28 @@ export default function HomePage() {
       )}
 
       {/* Hero Section */}
-      <section className="min-h-screen min-h-svh flex items-center justify-center relative px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-gray-100 to-gray-200">
-        {/* 3D Logo Background Layer - Large and Behind Everything */}
-        <div 
-          className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
-          style={{
-            opacity: 0.4,
-          }}
-        >
-          <div 
-            className="w-[90vw] h-[90vh] max-w-none rounded-full"
-            style={{
-              filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0 0 40px rgba(59, 130, 246, 0.4)) drop-shadow(0 0 80px rgba(59, 130, 246, 0.2))',
-              background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 70%)',
-            }}
-          >
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl">
-                  <span className="text-white font-bold text-6xl">N</span>
-                </div>
-                <p className="text-gray-600 text-lg font-medium">NexGen Sites</p>
-              </div>
-            </div>
+      <section className="min-h-screen min-h-svh flex flex-col items-center justify-center relative px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-gray-100 to-gray-200">
+        {/* Video Card */}
+        <div className="flex justify-center items-center w-full mb-8">
+          <div className="w-full max-w-4xl aspect-[16/9] rounded-2xl lg:rounded-3xl shadow-2xl ring-1 ring-black/5 overflow-hidden relative">
+            <VimeoHoverVideo 
+              videoId="1114113118"
+              className="w-full h-full"
+              showPlayButton={true}
+            />
           </div>
         </div>
 
-        {/* Hero Content Block - Positioned Freely */}
-        <div className="flex flex-col items-center relative z-10 mt-64 md:mt-72 lg:mt-80 xl:mt-96">
-          {/* Subtext - Positioned Above Center */}
-          <div className="w-full max-w-[700px] lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl text-center mb-6">
+        {/* Hero Content Block - Below Video */}
+        <div className="flex flex-col items-center w-full">
+          {/* Subtext */}
+          <div className="w-full max-w-[700px] lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl text-center mb-8">
             <p className="text-lg leading-relaxed md:text-xl md:leading-relaxed lg:text-2xl lg:leading-relaxed xl:text-2xl xl:leading-relaxed 2xl:text-3xl 2xl:leading-relaxed text-gray-700 font-medium px-4">
               NEXGEN helps service businesses scale with conversion-focused websites, ad campaigns and tools that generate consistent leads, closing the gap between clicks and customers.
             </p>
           </div>
 
-          {/* Buttons - Positioned Below Subtext */}
+          {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center w-full max-w-2xl px-4">
             <button 
               onClick={() => {
