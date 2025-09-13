@@ -8,6 +8,7 @@ import ParallaxContainer from "../components/ParallaxContainer"
 import HoverVideo from "../components/HoverVideo"
 import VimeoHoverVideo from "../components/VimeoHoverVideo"
 import NexGenContactForm from "./components/NexGenContactForm"
+import Logo3DCanvas from "../components/Logo3DCanvas"
 
 // GA4 type declaration
 declare global {
@@ -99,23 +100,45 @@ export default function HomePage() {
       )}
 
       {/* Hero Section */}
-      <section className="min-h-screen min-h-svh flex items-center justify-center relative px-0 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-white to-gray-50 py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32">
-        <div className="flex flex-col items-center text-center w-full max-w-6xl mx-auto gap-4 md:gap-5 lg:gap-6 xl:gap-8 2xl:gap-8 px-4 sm:px-0">
-          <h1
-            className="hero-title text-7xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-9xl 2xl:text-[14rem] font-extrabold tracking-tight bg-gradient-to-b from-gray-300 to-black bg-clip-text text-transparent leading-none mb-2 transition-all duration-300 ease-out relative break-words"
+      <section className="min-h-screen min-h-svh flex items-center justify-center relative px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-sky-100 to-blue-100">
+        {/* 3D Logo Background Layer - Large and Behind Everything */}
+        <div 
+          className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
+          style={{
+            opacity: 0.4,
+          }}
+        >
+          <div 
+            className="w-[90vw] h-[90vh] max-w-none rounded-full"
             style={{
-              transform: `scale(${heroScale})`,
-              opacity: heroOpacity,
+              filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0 0 40px rgba(59, 130, 246, 0.4)) drop-shadow(0 0 80px rgba(59, 130, 246, 0.2))',
+              background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 70%)',
             }}
           >
-            NEXGEN
-          </h1>
+            <Logo3DCanvas
+              className="w-full h-full"
+              scale={1}
+              position={[0, 0, 0]}
+              rotation={[0, 0, 0]}
+              autoRotate={true}
+              rotationSpeed={0.003}
+              enableControls={false}
+              enableEnvironment={true}
+            />
+          </div>
+        </div>
 
-          <p className="text-base leading-relaxed max-w-sm mt-2 opacity-90 sm:text-base md:text-lg md:mt-3 md:max-w-md lg:mt-4 lg:max-w-lg xl:mt-6 xl:max-w-xl text-gray-600">
-            NEXGEN helps service businesses scale with conversion-focused websites, ad campaigns that generate consistent leads, and AI responders that close the gap between clicks and customers.
-          </p>
+        {/* Hero Content Block - Positioned Freely */}
+        <div className="flex flex-col items-center relative z-10 mt-64 md:mt-72 lg:mt-80 xl:mt-96">
+          {/* Subtext - Positioned Above Center */}
+          <div className="w-full max-w-[700px] lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl text-center mb-6">
+            <p className="text-lg leading-relaxed md:text-xl md:leading-relaxed lg:text-2xl lg:leading-relaxed xl:text-2xl xl:leading-relaxed 2xl:text-3xl 2xl:leading-relaxed text-gray-700 font-medium px-4">
+              NEXGEN helps service businesses scale with conversion-focused websites, ad campaigns and tools that generate consistent leads, closing the gap between clicks and customers.
+            </p>
+          </div>
 
-          <div className="flex flex-col gap-4 justify-center items-center w-full max-w-sm mt-6 sm:gap-3 sm:max-w-xs lg:mt-8 xl:mt-10 2xl:mt-10">
+          {/* Buttons - Positioned Below Subtext */}
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center w-full max-w-2xl px-4">
             <button 
               onClick={() => {
                 const contactSection = document.getElementById('contact');
@@ -133,7 +156,7 @@ export default function HomePage() {
                 }
               }}
               aria-label="Scroll to contact section to start a conversation"
-              className="bg-black text-white px-8 py-5 text-lg rounded-xl font-semibold hover:bg-blue-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full md:py-4 md:text-base group relative overflow-hidden"
+              className="bg-black text-white px-8 py-4 text-lg rounded-xl font-semibold hover:bg-blue-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full sm:w-auto sm:min-w-[200px] group relative overflow-hidden"
             >
               <div className="w-2 h-2 bg-blue-500 rounded-full group-hover:scale-150 group-hover:bg-blue-400 transition-all duration-300"></div>
               Let's Talk
@@ -155,7 +178,7 @@ export default function HomePage() {
                 }
               }}
               aria-label="Scroll to work section to see our portfolio"
-              className="border border-gray-300 text-gray-700 px-8 py-5 text-lg rounded-xl font-semibold hover:bg-gray-50 transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full md:py-4 md:text-base"
+              className="bg-white text-gray-700 px-8 py-4 text-lg rounded-xl font-semibold hover:bg-gray-50 transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full sm:w-auto sm:min-w-[200px]"
             >
               See Our Work
             </button>
