@@ -77,7 +77,7 @@ export default function HomePage() {
   const card3Transform = `translateX(${(1 - easeOutCubic(card3Progress)) * -100}px)`
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 overflow-x-hidden">
       {/* Hamburger Menu Button */}
       <button
         onClick={() => setMenuOpen(!menuOpen)}
@@ -152,7 +152,7 @@ export default function HomePage() {
 
         {/* Mobile View - NEXGEN Centered, Content Bottom-Left */}
         <div 
-          className="relative z-10 w-full min-h-screen md:hidden"
+          className="relative z-10 w-full min-h-screen min-h-svh md:hidden"
           style={{ opacity: Math.max(0.3, 1 - scrollY / 400) }}
         >
           {/* Dark gradient backdrop for text contrast */}
@@ -182,7 +182,7 @@ export default function HomePage() {
           <div className="absolute bottom-8 left-4 right-4 md:bottom-8 md:left-6 md:right-auto flex flex-col items-start gap-2 md:gap-3 md:max-w-[85%] text-left">
             {/* Subtext */}
             <p className="text-xs md:text-sm text-gray-200 opacity-90 font-light leading-relaxed">
-              NEXGEN helps service businesses scale with conversion-focused websites and ad campaigns that generate consistent leads, closing the gap between clicks and customers.
+              NEXGEN helps businesses grow with conversion-focused websites and campaigns that generate consistent results — closing the gap between clicks and customers.
             </p>
 
             {/* Buttons */}
@@ -237,7 +237,7 @@ export default function HomePage() {
 
         {/* Desktop View - NEXGEN Centered, Content Bottom-Left */}
         <div 
-          className="hidden md:block relative z-10 w-full min-h-screen"
+          className="hidden md:block relative z-10 w-full min-h-screen min-h-svh"
           style={{ opacity: Math.max(0.3, 1 - scrollY / 400) }}
         >
           {/* Dark gradient backdrop for text contrast */}
@@ -267,7 +267,7 @@ export default function HomePage() {
           <div className="absolute bottom-12 left-12 flex flex-col items-start gap-4 max-w-md text-left">
             {/* Subtext */}
             <p className="text-gray-200 text-sm sm:text-base md:text-lg opacity-90 font-light leading-relaxed">
-              NEXGEN helps service businesses scale with conversion-focused websites and ad campaigns that generate consistent leads, closing the gap between clicks and customers.
+              NEXGEN helps businesses grow with conversion-focused websites and campaigns that generate consistent results — closing the gap between clicks and customers.
             </p>
 
             {/* Buttons */}
@@ -359,14 +359,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div
-              className="bg-white text-gray-900 rounded-2xl p-8 relative"
-              style={{
-                transform: card1Transform,
-                opacity: card1Progress,
-                transition: "transform 0.1s ease-out, opacity 0.1s ease-out",
-              }}
-            >
+            <div className="bg-white text-gray-900 rounded-2xl p-8 relative">
               <div className="absolute top-6 left-6 w-2 h-2 bg-gray-900 rounded-full"></div>
               <div className="mt-12">
                 <h3 className="text-4xl font-bold text-blue-500 mb-4">DISCOVERY CALL</h3>
@@ -376,14 +369,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div
-              className="bg-gray-700 text-white rounded-2xl p-8 relative"
-              style={{
-                transform: card2Transform,
-                opacity: card2Progress,
-                transition: "transform 0.1s ease-out, opacity 0.1s ease-out",
-              }}
-            >
+            <div className="bg-gray-700 text-white rounded-2xl p-8 relative">
               <div className="absolute top-6 left-6 w-2 h-2 bg-blue-500 rounded-full"></div>
               <div className="mt-12">
                 <h3 className="text-4xl font-bold text-blue-500 mb-4">SYSTEM BUILD</h3>
@@ -391,14 +377,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div
-              className="bg-gray-400 text-gray-900 rounded-2xl p-8 relative"
-              style={{
-                transform: card3Transform,
-                opacity: card3Progress,
-                transition: "transform 0.1s ease-out, opacity 0.1s ease-out",
-              }}
-            >
+            <div className="bg-gray-400 text-gray-900 rounded-2xl p-8 relative">
               <div className="absolute top-6 left-6 w-2 h-2 bg-gray-900 rounded-full"></div>
               <div className="mt-12">
                 <h3 className="text-4xl font-bold text-blue-500 mb-4">ONGOING OPTIMIZATION</h3>
