@@ -139,18 +139,15 @@ export default function HomePage() {
       {/* Hero Section - Fixed Background with Parallax */}
       <section className="fixed inset-0 z-10 flex items-center justify-center overflow-hidden">
         {/* Background Image - Fixed */}
-        <div 
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: 'url(/images/hero1.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundAttachment: 'fixed'
-          }}
-        >
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/hero1.png" 
+            alt="Hero background"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            style={{ imageRendering: '-webkit-optimize-contrast' }}
+          />
           {/* Overlay gradient for contrast */}
-          <div className="absolute inset-0 bg-black/20"></div>
+          <div className="absolute inset-0 bg-black/10"></div>
         </div>
 
         {/* Mobile View - NEXGEN Centered, Content Bottom-Left */}
