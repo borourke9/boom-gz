@@ -81,7 +81,7 @@ export default function HomePage() {
       {/* Hamburger Menu Button */}
       <button
         onClick={() => setMenuOpen(!menuOpen)}
-        className="fixed top-6 right-6 z-50 w-12 h-12 flex flex-col items-center justify-center gap-1.5 transition-all duration-300"
+        className="fixed top-4 right-4 md:top-6 md:right-6 z-50 w-10 h-10 md:w-12 md:h-12 flex flex-col items-center justify-center gap-1.5 transition-all duration-300"
         aria-label="Toggle menu"
       >
         <span className={`w-8 h-0.5 bg-white drop-shadow-lg transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
@@ -91,8 +91,8 @@ export default function HomePage() {
 
       {/* Dropdown Menu */}
       {menuOpen && (
-        <div className="fixed top-20 right-6 z-40 bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden min-w-[200px] border border-white/20">
-          <nav className="flex flex-col p-4">
+        <div className="fixed top-16 right-4 md:top-20 md:right-6 z-40 bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden min-w-[180px] md:min-w-[200px] border border-white/20">
+          <nav className="flex flex-col p-3 md:p-4">
             <a
               href="/"
               onClick={() => setMenuOpen(false)}
@@ -182,14 +182,14 @@ export default function HomePage() {
           </div>
 
           {/* Subtext + Buttons - Bottom-Left Corner */}
-          <div className="absolute bottom-8 left-6 flex flex-col items-start gap-3 max-w-[85%] text-left">
+          <div className="absolute bottom-4 left-4 right-4 md:bottom-8 md:left-6 md:right-auto flex flex-col items-start gap-2 md:gap-3 md:max-w-[85%] text-left">
             {/* Subtext */}
-            <p className="text-sm text-gray-200 opacity-90 font-light leading-relaxed">
+            <p className="text-xs md:text-sm text-gray-200 opacity-90 font-light leading-relaxed">
               NEXGEN helps service businesses scale with conversion-focused websites and ad campaigns that generate consistent leads, closing the gap between clicks and customers.
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-col space-y-3 w-full mt-2">
+            <div className="flex flex-col space-y-2 md:space-y-3 w-full mt-1 md:mt-2">
               <button 
                 onClick={() => {
                   const contactSection = document.getElementById('contact');
@@ -207,7 +207,7 @@ export default function HomePage() {
                   }
                 }}
                 aria-label="Scroll to contact section to start a conversation"
-                className="px-6 py-3 border border-white/80 rounded-md text-white text-sm transition-all duration-300 hover:bg-white hover:text-black hover:border-white shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                className="px-4 py-2.5 md:px-6 md:py-3 border border-white/80 rounded-md text-white text-xs md:text-sm transition-all duration-300 hover:bg-white hover:text-black hover:border-white shadow-[0_0_15px_rgba(255,255,255,0.1)]"
                 style={{ backdropFilter: 'blur(8px)' }}
               >
                 Let's Talk
@@ -229,7 +229,7 @@ export default function HomePage() {
                   }
                 }}
                 aria-label="Scroll to work section to see our portfolio"
-                className="px-6 py-3 border border-white/80 rounded-md text-white text-sm transition-all duration-300 hover:bg-white hover:text-black hover:border-white shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                className="px-4 py-2.5 md:px-6 md:py-3 border border-white/80 rounded-md text-white text-xs md:text-sm transition-all duration-300 hover:bg-white hover:text-black hover:border-white shadow-[0_0_15px_rgba(255,255,255,0.1)]"
                 style={{ backdropFilter: 'blur(8px)' }}
               >
                 See Our Work
@@ -547,13 +547,19 @@ export default function HomePage() {
       </section>
 
       {/* NEXGEN Text Section */}
-      <div className="w-screen bg-black text-white py-20 -mx-4 sm:-mx-6 md:mx-0 overflow-x-hidden">
-        <div className="text-center">
-          <h2 className="font-['Inter_Tight'] font-black tracking-tight leading-[0.75] text-[20vmin] md:text-[18vmin] lg:text-[16vmin] text-white">
-            NEXGEN
-          </h2>
-          <p className="text-xs opacity-70 mt-4">© 2025 NEXGEN. All rights reserved.</p>
-          <div className="mt-6">
+      <div className="w-screen bg-black text-white -mx-4 sm:-mx-6 md:mx-0 overflow-x-hidden">
+        <div className="text-center flex flex-col items-center">
+          <img 
+            src="/images/nexgen101.png" 
+            alt="NEXGEN" 
+            className="w-full h-auto"
+            style={{
+              filter: 'brightness(0) invert(1)',
+              opacity: 0.95
+            }}
+          />
+          <p className="text-xs opacity-70 mt-0.5 pb-1">© 2025 NEXGEN. All rights reserved.</p>
+          <div className="pb-1">
             <a 
               href="/privacy" 
               className="text-xs opacity-60 hover:opacity-100 transition-opacity underline"
