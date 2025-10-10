@@ -1,11 +1,28 @@
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = 'https://www.nexgensites.com';
+  const currentDate = new Date();
+
   return [
-    { url: 'https://www.nexgensites.com/', changeFrequency: 'weekly', priority: 1.0 },
-    { url: 'https://www.nexgensites.com/work', changeFrequency: 'monthly', priority: 0.7 },
-    { url: 'https://www.nexgensites.com/contact', changeFrequency: 'monthly', priority: 0.7 },
-    { url: 'https://www.nexgensites.com/services', changeFrequency: 'monthly', priority: 0.8 },
+    {
+      url: `${baseUrl}/`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/instant-estimator`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
   ];
 }
 
