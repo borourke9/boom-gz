@@ -179,7 +179,7 @@ export default function HomePage() {
           </div>
 
           {/* Subtext + Buttons - Bottom-Left Corner */}
-          <div className="absolute bottom-4 left-4 right-4 md:bottom-8 md:left-6 md:right-auto flex flex-col items-start gap-2 md:gap-3 md:max-w-[85%] text-left">
+          <div className="absolute bottom-8 left-4 right-4 md:bottom-8 md:left-6 md:right-auto flex flex-col items-start gap-2 md:gap-3 md:max-w-[85%] text-left">
             {/* Subtext */}
             <p className="text-xs md:text-sm text-gray-200 opacity-90 font-light leading-relaxed">
               NEXGEN helps service businesses scale with conversion-focused websites and ad campaigns that generate consistent leads, closing the gap between clicks and customers.
@@ -338,7 +338,6 @@ export default function HomePage() {
       <section
         className="parallax-section relative z-20 py-20 px-6 text-white min-h-screen"
         style={{
-          transform: `translateY(${windowHeight && scrollY > windowHeight ? scrollY - windowHeight : 0}px)`,
           backgroundImage: 'url(/images/lake.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -454,7 +453,7 @@ export default function HomePage() {
       </section>
 
             {/* Our Solutions Section */}
-      <section id="solutions" className="relative mx-auto mt-24 mb-0 max-w-7xl px-4">
+      <section id="solutions" className="relative mx-auto mt-0 mb-0 max-w-7xl px-4 pt-24">
         {/* White Backdrop */}
         <div className="absolute inset-0 -m-4 bg-white rounded-3xl shadow-lg"></div>
         
@@ -492,16 +491,19 @@ export default function HomePage() {
       <section 
         id="contact" 
         aria-labelledby="contact-heading" 
-        className="relative pb-20 sm:pb-24"
-        style={{
-          backgroundImage: 'url(/images/corn.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
+        className="relative pb-20 sm:pb-24 overflow-hidden"
       >
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/corn.png" 
+            alt="Contact background"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            style={{ imageRendering: '-webkit-optimize-contrast' }}
+          />
+        </div>
         {/* Background Overlay for text readability */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/40 z-0"></div>
         
         <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24">
           {/* Header */}
