@@ -320,15 +320,6 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div 
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10 md:hidden"
-          style={{ opacity: Math.max(0, 1 - scrollY / 200) }}
-        >
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full mt-2"></div>
-          </div>
-        </div>
       </section>
 
       {/* Parallax Spacer - Creates scroll space */}
