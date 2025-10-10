@@ -453,7 +453,7 @@ export default function HomePage() {
       </section>
 
             {/* Our Solutions Section */}
-      <section id="solutions" className="relative mx-auto mt-0 mb-0 max-w-7xl px-4 pt-24">
+      <section id="solutions" className="relative mx-auto mt-0 mb-0 max-w-7xl px-4 pt-24 pb-0">
         {/* White Backdrop */}
         <div className="absolute inset-0 -m-4 bg-white rounded-3xl shadow-lg"></div>
         
@@ -494,16 +494,14 @@ export default function HomePage() {
         className="relative pb-20 sm:pb-24 overflow-hidden"
       >
         {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="/images/corn.png" 
-            alt="Contact background"
-            className="absolute inset-0 w-full h-full object-cover object-center"
-            style={{ imageRendering: '-webkit-optimize-contrast' }}
-          />
-        </div>
+        <img 
+          src="/images/hero1.png" 
+          alt="Contact background"
+          className="absolute inset-0 w-full h-full object-cover object-center z-0"
+          style={{ imageRendering: '-webkit-optimize-contrast' }}
+        />
         {/* Background Overlay for text readability */}
-        <div className="absolute inset-0 bg-black/40 z-0"></div>
+        <div className="absolute inset-0 bg-black/50 z-0"></div>
         
         <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24">
           {/* Header */}
@@ -546,15 +544,16 @@ export default function HomePage() {
       </section>
 
       {/* NEXGEN Text Section */}
-      <div className="w-screen bg-black text-white -mx-4 sm:-mx-6 md:mx-0 overflow-x-hidden">
+      <div className="w-full bg-black text-white overflow-hidden">
         <div className="text-center flex flex-col items-center">
           <img 
             src="/images/nexgen101.png" 
             alt="NEXGEN" 
-            className="w-full h-auto"
+            className="w-full h-auto max-w-full"
             style={{
               filter: 'brightness(0) invert(1)',
-              opacity: 0.95
+              opacity: 0.95,
+              display: 'block'
             }}
           />
           <p className="text-xs opacity-70 mt-0.5 pb-1">© 2025 NEXGEN. All rights reserved.</p>
