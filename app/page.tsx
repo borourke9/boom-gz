@@ -152,24 +152,25 @@ export default function HomePage() {
           {/* Dark gradient backdrop for text contrast */}
           <div className="absolute top-[45%] inset-x-0 h-[25%] bg-gradient-to-b from-black/40 via-transparent to-black/0 blur-3xl"></div>
           
-          {/* NEXGEN Hero Text - Ultra-Condensed with Connected NE */}
-          <h1 
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center w-full animate-rise-in" 
-            style={{ 
-              fontFamily: 'var(--font-bebas-neue, "Bebas Neue", "Impact", sans-serif)',
-              fontSize: 'clamp(12rem, 40vw, 30rem)',
-              fontWeight: 900,
-              fontStretch: 'ultra-condensed',
-              letterSpacing: '-0.15em',
-              lineHeight: 0.8,
-              textTransform: 'uppercase',
-              textShadow: '0 4px 20px rgba(0,0,0,0.4)',
+          {/* NEXGEN Hero Image */}
+          <div 
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-rise-in"
+            style={{
+              filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.4))',
               mixBlendMode: 'overlay',
               opacity: 0.95
             }}
           >
-            <span style={{ letterSpacing: '-0.25em' }}>NE</span>XGEN
-          </h1>
+            <img 
+              src="/images/nexgen101.png" 
+              alt="NEXGEN" 
+              className="w-auto h-auto max-w-[90vw] max-h-[70vh] object-contain"
+              style={{
+                width: 'clamp(400px, 60vw, 1200px)',
+                height: 'auto'
+              }}
+            />
+          </div>
 
           {/* Subtext + Buttons - Bottom-Left Corner */}
           <div className="absolute bottom-8 left-6 flex flex-col items-start gap-3 max-w-[85%] text-left">
@@ -233,24 +234,25 @@ export default function HomePage() {
           {/* Dark gradient backdrop for text contrast */}
           <div className="absolute top-[45%] inset-x-0 h-[25%] bg-gradient-to-b from-black/40 via-transparent to-black/0 blur-3xl"></div>
           
-          {/* NEXGEN Hero Text - Ultra-Condensed with Connected NE */}
-          <h1 
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center w-full animate-rise-in" 
-            style={{ 
-              fontFamily: 'var(--font-bebas-neue, "Bebas Neue", "Impact", sans-serif)',
-              fontSize: 'clamp(12rem, 25vw, 30rem)',
-              fontWeight: 900,
-              fontStretch: 'ultra-condensed',
-              letterSpacing: '-0.15em',
-              lineHeight: 0.8,
-              textTransform: 'uppercase',
-              textShadow: '0 4px 20px rgba(0,0,0,0.4)',
+          {/* NEXGEN Hero Image */}
+          <div 
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-rise-in"
+            style={{
+              filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.4))',
               mixBlendMode: 'overlay',
               opacity: 0.95
             }}
           >
-            <span style={{ letterSpacing: '-0.25em' }}>NE</span>XGEN
-          </h1>
+            <img 
+              src="/images/nexgen101.png" 
+              alt="NEXGEN" 
+              className="w-auto h-auto max-w-[90vw] max-h-[70vh] object-contain"
+              style={{
+                width: 'clamp(600px, 50vw, 1400px)',
+                height: 'auto'
+              }}
+            />
+          </div>
 
           {/* Subtext + Buttons - Bottom-Left Corner */}
           <div className="absolute bottom-12 left-12 flex flex-col items-start gap-4 max-w-md text-left">
