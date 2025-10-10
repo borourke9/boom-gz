@@ -20,8 +20,8 @@ export default function InstantEstimatorPage() {
       <EstimatorNav />
       
       {/* Hero Section */}
-      <section className="relative py-20 md:py-28 px-6 md:px-12 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-6xl mx-auto">
+      <section className="relative py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="text-center mb-12">
             <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 text-sm font-medium rounded-full mb-6">
               Instant Estimator
@@ -46,16 +46,19 @@ export default function InstantEstimatorPage() {
           </div>
           
           {/* Hero Video */}
-          <div className="relative max-w-4xl mx-auto">
-            <div className="relative aspect-video rounded-2xl shadow-2xl overflow-hidden bg-gray-100">
-              <iframe
-                src="https://player.vimeo.com/video/1116473957?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=0&muted=0&loop=1&controls=1&background=0"
-                frameBorder="0"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                className="absolute inset-0 w-full h-full rounded-xl"
-                title="Instant Estimator Demo"
-              />
+          <div className="flex justify-center mt-12">
+            <div className="relative w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden bg-gray-100" style={{paddingTop: '75%', position: 'relative'}}>
+              <div style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '100%',
+                height: '133.3%',
+                minHeight: '133.3%'
+              }}>
+                <VimeoHoverVideo videoId="1116491693" showPlayButton={true} />
+              </div>
             </div>
           </div>
         </div>
@@ -236,8 +239,18 @@ export default function InstantEstimatorPage() {
             
             {/* Center Video */}
             <div className="flex justify-center">
-              <div className="relative w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden bg-gray-100" style={{paddingTop: '118.98%'}}>
-                <VimeoHoverVideo videoId="1116491693" showPlayButton={true} />
+              <div className="relative w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden bg-gray-100" style={{paddingTop: '75%', position: 'relative'}}>
+                <div style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: '100%',
+                  height: '133.3%',
+                  minHeight: '133.3%'
+                }}>
+                  <VimeoHoverVideo videoId="1116491693" showPlayButton={true} />
+                </div>
               </div>
             </div>
             

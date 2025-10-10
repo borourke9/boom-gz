@@ -54,6 +54,11 @@ export default function RootLayout({
         
         {/* Vimeo Player API */}
         <script src="https://player.vimeo.com/api/player.js" />
+        
+        {/* Favicon Links for Better Browser Support */}
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
       <body className="min-h-screen flex flex-col bg-background text-foreground">
         <main className="flex-1">{children}</main>
@@ -91,5 +96,12 @@ export const metadata: Metadata = {
       'Websites, Google & Meta ads, and AI responders for service businesses.',
     images: ['/og/og-cover.jpg'],
   },
-  icons: { icon: '/favicon.ico', apple: '/apple-touch-icon.png' },
+  icons: { 
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
+      { url: '/favicon.ico', sizes: '16x16', type: 'image/x-icon' }
+    ], 
+    apple: '/apple-touch-icon.png',
+    shortcut: '/favicon.ico'
+  },
 };

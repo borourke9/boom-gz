@@ -230,3 +230,16 @@ body {
 .animate-rise-in {
   animation: riseIn 1s ease-out forwards;
 }
+
+/* Parallax performance optimizations */
+.parallax-section {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Smooth scrolling for better performance */
+html {
+  scroll-behavior: smooth;
+}

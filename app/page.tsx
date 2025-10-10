@@ -20,16 +20,36 @@ export default function HomePage() {
   const [scrollY, setScrollY] = useState(0)
   const [isScrolled, setIsScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [windowHeight, setWindowHeight] = useState(0)
 
   useEffect(() => {
+    // Set window height on client side
+    setWindowHeight(window.innerHeight)
+
+    let ticking = false
+
     const handleScroll = () => {
-      const currentScrollY = window.scrollY
-      setScrollY(currentScrollY)
-      setIsScrolled(currentScrollY > 100)
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY
+          setScrollY(currentScrollY)
+          setIsScrolled(currentScrollY > 100)
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    const handleResize = () => {
+      setWindowHeight(window.innerHeight)
     }
 
     window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener("resize", handleResize, { passive: true })
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      window.removeEventListener("resize", handleResize)
+    }
   }, [])
 
 
@@ -115,32 +135,18 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* Floating Instant Estimator Button - All Devices */}
-      {isScrolled && (
-        <div className="fixed left-4 top-1/2 -translate-y-1/2 z-40">
-          <a
-            href="/instant-estimator"
-            className="group flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full px-6 py-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-            </svg>
-            <span className="hidden sm:inline">Instant Estimator</span>
-            <span className="sm:hidden">Estimator</span>
-          </a>
-        </div>
-      )}
 
-      {/* Hero Section - Full Page Background Image */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
+      {/* Hero Section - Fixed Background with Parallax */}
+      <section className="fixed inset-0 z-10 flex items-center justify-center overflow-hidden">
+        {/* Background Image - Fixed */}
         <div 
           className="absolute inset-0 z-0"
           style={{
             backgroundImage: 'url(/images/hero1.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
+            backgroundRepeat: 'no-repeat',
+            backgroundAttachment: 'fixed'
           }}
         >
           {/* Overlay gradient for contrast */}
@@ -148,7 +154,10 @@ export default function HomePage() {
         </div>
 
         {/* Mobile View - NEXGEN Centered, Content Bottom-Left */}
-        <div className="relative z-10 w-full min-h-screen md:hidden">
+        <div 
+          className="relative z-10 w-full min-h-screen md:hidden"
+          style={{ opacity: Math.max(0.3, 1 - scrollY / 400) }}
+        >
           {/* Dark gradient backdrop for text contrast */}
           <div className="absolute top-[45%] inset-x-0 h-[25%] bg-gradient-to-b from-black/40 via-transparent to-black/0 blur-3xl"></div>
           
@@ -230,7 +239,10 @@ export default function HomePage() {
         </div>
 
         {/* Desktop View - NEXGEN Centered, Content Bottom-Left */}
-        <div className="hidden md:block relative z-10 w-full min-h-screen">
+        <div 
+          className="hidden md:block relative z-10 w-full min-h-screen"
+          style={{ opacity: Math.max(0.3, 1 - scrollY / 400) }}
+        >
           {/* Dark gradient backdrop for text contrast */}
           <div className="absolute top-[45%] inset-x-0 h-[25%] bg-gradient-to-b from-black/40 via-transparent to-black/0 blur-3xl"></div>
           
@@ -312,24 +324,35 @@ export default function HomePage() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10 md:hidden">
+        <div 
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10 md:hidden"
+          style={{ opacity: Math.max(0, 1 - scrollY / 200) }}
+        >
           <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
             <div className="w-1 h-3 bg-white rounded-full mt-2"></div>
           </div>
         </div>
       </section>
 
-      {/* Card Section */}
+      {/* Parallax Spacer - Creates scroll space */}
+      <div className="relative z-20 h-screen"></div>
+
+      {/* Card Section - Parallax Overlay */}
       <section
-        className="py-20 px-6 bg-gradient-to-r from-gray-800 to-black text-white"
+        className="parallax-section relative z-20 py-20 px-6 text-white min-h-screen"
         style={{
-          transform: cardSectionTransform,
-          opacity: cardSectionOpacity,
-          transformStyle: "preserve-3d",
-          perspective: "1000px",
+          transform: `translateY(${windowHeight && scrollY > windowHeight ? scrollY - windowHeight : 0}px)`,
+          backgroundImage: 'url(/images/lake.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
         }}
       >
-        <div className="max-w-6xl mx-auto">
+        {/* Background Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-800/80 to-black/80"></div>
+        
+        {/* Content */}
+        <div className="relative z-10 max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2
               className="font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-center -tracking-[0.02em] leading-[0.95] mb-5 text-white"
@@ -390,18 +413,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Work Section */}
-      <section
-        id="work"
-        aria-labelledby="work-heading"
-        className="w-full py-16 bg-white"
-        style={{
-          transform: servicesTransform,
-          opacity: servicesOpacity,
-          transformStyle: "preserve-3d",
-          perspective: "1000px",
-        }}
-      >
+      {/* Content Container - Everything after parallax */}
+      <div className="relative z-30">
+        {/* Featured Work Section */}
+        <section
+          id="work"
+          aria-labelledby="work-heading"
+          className="w-full py-16 bg-white"
+        >
         <div className="max-w-7xl mx-auto px-4 md:px-0">
           <h2
             id="work-heading"
@@ -438,9 +457,14 @@ export default function HomePage() {
       </section>
 
             {/* Our Solutions Section */}
-      <section id="solutions" className="relative mx-auto my-24 max-w-7xl px-4">
+      <section id="solutions" className="relative mx-auto mt-24 mb-0 max-w-7xl px-4">
+        {/* White Backdrop */}
+        <div className="absolute inset-0 -m-4 bg-white rounded-3xl shadow-lg"></div>
+        
+        {/* Placeholder Backdrop */}
+        <div className="absolute inset-0 -m-6 bg-gray-100 rounded-3xl -z-10"></div>
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <div className="relative z-10 text-center mb-12">
           <p className="mb-2 text-xs tracking-[.2em] uppercase text-black/40">What We Do</p>
           <h2 className="text-5xl md:text-6xl font-black -tracking-[0.02em] leading-[0.95] text-gray-900" style={{ fontFamily: "Inter Tight, sans-serif" }}>
             OUR SOLUTIONS
@@ -448,7 +472,7 @@ export default function HomePage() {
         </div>
 
         {/* Large Video Section */}
-        <div className="mb-16">
+        <div className="relative z-10 mb-16">
           <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-blue-600/8 via-blue-500/6 to-blue-400/4 p-8">
             <div className="relative rounded-2xl overflow-hidden">
               <div className="relative pt-[56.25%]">
@@ -465,109 +489,37 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Service Cards Grid */}
-        <div className="rounded-3xl border border-white/25 bg-white/18 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_30px_80px_-24px_rgba(0,0,0,0.35)] p-8 md:p-12">
-          {/* Inner glow overlay */}
-          <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-b from-white/14 via-transparent to-white/5" />
-          
-          {/* Content */}
-          <div className="relative z-10">
-            <ParallaxContainer from={50} to={-50}>
-              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-                {/* Websites */}
-                <div className="group text-center">
-                  <div className="relative mb-6">
-                    <div className="w-20 h-20 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                      <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"></div>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">Websites</h3>
-                  <p className="text-gray-600 mb-4">Fast, branded sites that convert visitors into customers</p>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">Under 2-week build</span>
-                    <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">Mobile-first design</span>
-                  </div>
-                </div>
-
-                {/* Google Ads */}
-                <div className="group text-center">
-                  <div className="relative mb-6">
-                    <div className="w-20 h-20 mx-auto bg-gradient-to-br from-green-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                      <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                      </svg>
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"></div>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">Google Ads</h3>
-                  <p className="text-gray-600 mb-4">Targeted PPC campaigns that drive qualified leads</p>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    <span className="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Avg +42% calls</span>
-                    <span className="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">ROAS tracking</span>
-                  </div>
-                </div>
-
-                {/* AI Solutions */}
-                <div className="group text-center">
-                  <div className="relative mb-6">
-                    <div className="w-20 h-20 mx-auto bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                      <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                      </svg>
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"></div>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">AI Solutions</h3>
-                  <p className="text-gray-600 mb-4">Smart automation that never misses a lead</p>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    <span className="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">24/7 lead capture</span>
-                    <span className="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">Auto follow-up</span>
-                  </div>
-                </div>
-
-                {/* Local SEO */}
-                <div className="group text-center">
-                  <div className="relative mb-6">
-                    <div className="w-20 h-20 mx-auto bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                      <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"></div>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">Local SEO</h3>
-                  <p className="text-gray-600 mb-4">Dominate local search and Google Business Profile</p>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Top 3 rankings</span>
-                    <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">GBP optimization</span>
-                  </div>
-                </div>
-              </div>
-            </ParallaxContainer>
-          </div>
-        </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" aria-labelledby="contact-heading" className="py-20 sm:py-24">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+      <section 
+        id="contact" 
+        aria-labelledby="contact-heading" 
+        className="relative pb-20 sm:pb-24"
+        style={{
+          backgroundImage: 'url(/images/corn.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        {/* Background Overlay for text readability */}
+        <div className="absolute inset-0 bg-black/40"></div>
+        
+        <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24">
           {/* Header */}
           <div className="text-center mb-10">
-            <div className="uppercase tracking-[0.2em] text-xs sm:text-sm text-black/50 dark:text-white/60 text-center mb-4">
+            <div className="uppercase tracking-[0.2em] text-xs sm:text-sm text-white/80 text-center mb-4">
               Contact
             </div>
             <h2
               id="contact-heading"
-              className="font-black text-4xl sm:text-5xl md:text-6xl text-center -tracking-[0.02em] leading-[1] mb-5"
+              className="font-black text-4xl sm:text-5xl md:text-6xl text-center -tracking-[0.02em] leading-[1] mb-5 text-white"
               style={{ fontFamily: "Inter Tight, sans-serif" }}
             >
               Let's build your growth system
             </h2>
-            <p className="text-center max-w-[70ch] mx-auto text-gray-600">
+            <p className="text-center max-w-[70ch] mx-auto text-white/90">
               Tell us about your business and goals. We'll reply within 24 hours with a simple plan and next steps.
             </p>
           </div>
@@ -653,6 +605,7 @@ export default function HomePage() {
           {"@type":"Question","name":"Do you work outside Northern Michigan?","acceptedAnswer":{"@type":"Answer","text":"Yes—remote friendly across the U.S."}}
         ]
       })}} />
+      </div>
     </div>
   )
 }
