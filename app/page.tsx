@@ -497,8 +497,8 @@ export default function HomePage() {
         <img 
           src="/images/hero1.png" 
           alt="Contact background"
-          className="absolute inset-0 w-full h-full object-cover object-center z-0"
-          style={{ imageRendering: '-webkit-optimize-contrast' }}
+          className="absolute inset-0 w-full h-full object-contain object-center z-0"
+          style={{ imageRendering: '-webkit-optimize-contrast', backgroundColor: '#1a1a1a' }}
         />
         {/* Background Overlay for text readability */}
         <div className="absolute inset-0 bg-black/50 z-0"></div>
