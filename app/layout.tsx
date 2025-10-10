@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from 'next'
-import { Inter_Tight, Manrope, Playfair_Display } from "next/font/google"
+import { Inter_Tight, Manrope, Playfair_Display, Bebas_Neue } from "next/font/google"
 import "./globals.css"
 
 const interTight = Inter_Tight({
@@ -24,13 +24,20 @@ const playfairDisplay = Playfair_Display({
   weight: ["400", "500", "600", "700", "800", "900"],
 })
 
+const bebasNeue = Bebas_Neue({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-bebas-neue",
+  weight: ["400"],
+})
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${interTight.variable} ${manrope.variable} ${playfairDisplay.variable} antialiased`}>
+    <html lang="en" className={`${interTight.variable} ${manrope.variable} ${playfairDisplay.variable} ${bebasNeue.variable} antialiased`}>
       <head>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link rel="preconnect" href="https://player.vimeo.com" />

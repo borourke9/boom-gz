@@ -53,3 +53,5 @@ You can modify the 3D logo behavior by editing the `Logo3DCanvas` component in t
 
 The 3D logo will appear above the "NEXGEN" text in the hero section with a smooth auto-rotation effect.
 
+
+

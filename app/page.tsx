@@ -19,6 +19,7 @@ declare global {
 export default function HomePage() {
   const [scrollY, setScrollY] = useState(0)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,16 +58,62 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Fixed Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-center">
-            <div className="text-2xl font-bold text-gray-900">
-              NEXGEN
-            </div>
-          </div>
+      {/* Hamburger Menu Button */}
+      <button
+        onClick={() => setMenuOpen(!menuOpen)}
+        className="fixed top-6 right-6 z-50 w-12 h-12 flex flex-col items-center justify-center gap-1.5 transition-all duration-300"
+        aria-label="Toggle menu"
+      >
+        <span className={`w-8 h-0.5 bg-white drop-shadow-lg transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+        <span className={`w-8 h-0.5 bg-white drop-shadow-lg transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`}></span>
+        <span className={`w-8 h-0.5 bg-white drop-shadow-lg transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+      </button>
+
+      {/* Dropdown Menu */}
+      {menuOpen && (
+        <div className="fixed top-20 right-6 z-40 bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden min-w-[200px] border border-white/20">
+          <nav className="flex flex-col p-4">
+            <a
+              href="/"
+              onClick={() => setMenuOpen(false)}
+              className="px-4 py-3 text-white font-semibold hover:bg-white/20 rounded-lg transition-colors duration-200"
+            >
+              Home
+            </a>
+            <a
+              href="/instant-estimator"
+              onClick={() => setMenuOpen(false)}
+              className="px-4 py-3 text-white font-semibold hover:bg-white/20 rounded-lg transition-colors duration-200"
+            >
+              Instant Estimator
+            </a>
+            <button
+              onClick={() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+                setMenuOpen(false);
+              }}
+              className="px-4 py-3 text-white font-semibold hover:bg-white/20 rounded-lg transition-colors duration-200 text-left"
+            >
+              Contact
+            </button>
+            <button
+              onClick={() => {
+                const workSection = document.getElementById('work');
+                if (workSection) {
+                  workSection.scrollIntoView({ behavior: 'smooth' });
+                }
+                setMenuOpen(false);
+              }}
+              className="px-4 py-3 text-white font-semibold hover:bg-white/20 rounded-lg transition-colors duration-200 text-left"
+            >
+              Our Work
+            </button>
+          </nav>
         </div>
-      </nav>
+      )}
 
       {/* Floating Instant Estimator Button - All Devices */}
       {isScrolled && (
@@ -84,80 +131,188 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* Hero Section */}
-      <section className="min-h-screen min-h-svh flex flex-col items-center justify-center relative px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-gray-100 to-gray-200">
-        {/* Video Card */}
-        <div className="flex justify-center items-center w-full mb-8">
-          <div className="w-full max-w-4xl aspect-[16/9] rounded-2xl lg:rounded-3xl shadow-2xl ring-1 ring-black/5 overflow-hidden relative">
-            <VimeoHoverVideo 
-              videoId="1114113118"
-              className="w-full h-full"
-              showPlayButton={true}
-            />
-          </div>
+      {/* Hero Section - Full Page Background Image */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: 'url(/images/hero1.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        >
+          {/* Overlay gradient for contrast */}
+          <div className="absolute inset-0 bg-black/20"></div>
         </div>
 
-        {/* Hero Content Block - Below Video */}
-        <div className="flex flex-col items-center w-full">
-          {/* Subtext */}
-          <div className="w-full max-w-[700px] lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl text-center mb-8">
-            <p className="text-lg leading-relaxed md:text-xl md:leading-relaxed lg:text-2xl lg:leading-relaxed xl:text-2xl xl:leading-relaxed 2xl:text-3xl 2xl:leading-relaxed text-gray-700 font-medium px-4">
-              NEXGEN helps service businesses scale with conversion-focused websites, ad campaigns and tools that generate consistent leads, closing the gap between clicks and customers.
-            </p>
-          </div>
+        {/* Mobile View - NEXGEN Centered, Content Bottom-Left */}
+        <div className="relative z-10 w-full min-h-screen md:hidden">
+          {/* Dark gradient backdrop for text contrast */}
+          <div className="absolute top-[45%] inset-x-0 h-[25%] bg-gradient-to-b from-black/40 via-transparent to-black/0 blur-3xl"></div>
+          
+          {/* NEXGEN Hero Text - Ultra-Condensed with Connected NE */}
+          <h1 
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center w-full animate-rise-in" 
+            style={{ 
+              fontFamily: 'var(--font-bebas-neue, "Bebas Neue", "Impact", sans-serif)',
+              fontSize: 'clamp(12rem, 40vw, 30rem)',
+              fontWeight: 900,
+              fontStretch: 'ultra-condensed',
+              letterSpacing: '-0.15em',
+              lineHeight: 0.8,
+              textTransform: 'uppercase',
+              textShadow: '0 4px 20px rgba(0,0,0,0.4)',
+              mixBlendMode: 'overlay',
+              opacity: 0.95
+            }}
+          >
+            <span style={{ letterSpacing: '-0.25em' }}>NE</span>XGEN
+          </h1>
 
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center w-full max-w-2xl px-4">
-            <button 
-              onClick={() => {
-                const contactSection = document.getElementById('contact');
-                if (contactSection) {
-                  contactSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
+          {/* Subtext + Buttons - Bottom-Left Corner */}
+          <div className="absolute bottom-8 left-6 flex flex-col items-start gap-3 max-w-[85%] text-left">
+            {/* Subtext */}
+            <p className="text-sm text-gray-200 opacity-90 font-light leading-relaxed">
+              NEXGEN helps service businesses scale with conversion-focused websites and ad campaigns that generate consistent leads, closing the gap between clicks and customers.
+            </p>
+
+            {/* Buttons */}
+            <div className="flex flex-col space-y-3 w-full mt-2">
+              <button 
+                onClick={() => {
                   const contactSection = document.getElementById('contact');
                   if (contactSection) {
                     contactSection.scrollIntoView({ behavior: 'smooth' });
                   }
-                }
-              }}
-              aria-label="Scroll to contact section to start a conversation"
-              className="bg-black text-white px-8 py-4 text-lg rounded-xl font-semibold hover:bg-blue-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full sm:w-auto sm:min-w-[200px] group relative overflow-hidden"
-            >
-              <div className="w-2 h-2 bg-blue-500 rounded-full group-hover:scale-150 group-hover:bg-blue-400 transition-all duration-300"></div>
-              Let's Talk
-            </button>
-            <button 
-              onClick={() => {
-                const workSection = document.getElementById('work');
-                if (workSection) {
-                  workSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }
+                }}
+                aria-label="Scroll to contact section to start a conversation"
+                className="px-6 py-3 border border-white/80 rounded-md text-white text-sm transition-all duration-300 hover:bg-white hover:text-black hover:border-white shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                style={{ backdropFilter: 'blur(8px)' }}
+              >
+                Let's Talk
+              </button>
+              <button 
+                onClick={() => {
                   const workSection = document.getElementById('work');
                   if (workSection) {
                     workSection.scrollIntoView({ behavior: 'smooth' });
                   }
-                }
-              }}
-              aria-label="Scroll to work section to see our portfolio"
-              className="bg-white text-gray-700 px-8 py-4 text-lg rounded-xl font-semibold hover:bg-gray-50 transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full sm:w-auto sm:min-w-[200px]"
-            >
-              See Our Work
-            </button>
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const workSection = document.getElementById('work');
+                    if (workSection) {
+                      workSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }
+                }}
+                aria-label="Scroll to work section to see our portfolio"
+                className="px-6 py-3 border border-white/80 rounded-md text-white text-sm transition-all duration-300 hover:bg-white hover:text-black hover:border-white shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                style={{ backdropFilter: 'blur(8px)' }}
+              >
+                See Our Work
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop View - NEXGEN Centered, Content Bottom-Left */}
+        <div className="hidden md:block relative z-10 w-full min-h-screen">
+          {/* Dark gradient backdrop for text contrast */}
+          <div className="absolute top-[45%] inset-x-0 h-[25%] bg-gradient-to-b from-black/40 via-transparent to-black/0 blur-3xl"></div>
+          
+          {/* NEXGEN Hero Text - Ultra-Condensed with Connected NE */}
+          <h1 
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center w-full animate-rise-in" 
+            style={{ 
+              fontFamily: 'var(--font-bebas-neue, "Bebas Neue", "Impact", sans-serif)',
+              fontSize: 'clamp(12rem, 25vw, 30rem)',
+              fontWeight: 900,
+              fontStretch: 'ultra-condensed',
+              letterSpacing: '-0.15em',
+              lineHeight: 0.8,
+              textTransform: 'uppercase',
+              textShadow: '0 4px 20px rgba(0,0,0,0.4)',
+              mixBlendMode: 'overlay',
+              opacity: 0.95
+            }}
+          >
+            <span style={{ letterSpacing: '-0.25em' }}>NE</span>XGEN
+          </h1>
+
+          {/* Subtext + Buttons - Bottom-Left Corner */}
+          <div className="absolute bottom-12 left-12 flex flex-col items-start gap-4 max-w-md text-left">
+            {/* Subtext */}
+            <p className="text-gray-200 text-sm sm:text-base md:text-lg opacity-90 font-light leading-relaxed">
+              NEXGEN helps service businesses scale with conversion-focused websites and ad campaigns that generate consistent leads, closing the gap between clicks and customers.
+            </p>
+
+            {/* Buttons */}
+            <div className="flex gap-4 mt-4">
+              <button 
+                onClick={() => {
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }
+                }}
+                aria-label="Scroll to contact section to start a conversation"
+                className="px-6 py-3 border border-white/80 rounded-md text-white text-sm sm:text-base transition-all duration-300 hover:bg-white hover:text-black hover:border-white shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                style={{ backdropFilter: 'blur(8px)' }}
+              >
+                Let's Talk
+              </button>
+              <button 
+                onClick={() => {
+                  const workSection = document.getElementById('work');
+                  if (workSection) {
+                    workSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const workSection = document.getElementById('work');
+                    if (workSection) {
+                      workSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }
+                }}
+                aria-label="Scroll to work section to see our portfolio"
+                className="px-6 py-3 border border-white/80 rounded-md text-white text-sm sm:text-base transition-all duration-300 hover:bg-white hover:text-black hover:border-white shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                style={{ backdropFilter: 'blur(8px)' }}
+              >
+                See Our Work
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-gray-400 rounded-full mt-2"></div>
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10 md:hidden">
+          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white rounded-full mt-2"></div>
           </div>
         </div>
       </section>
