@@ -347,16 +347,55 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          {/* Desktop: Sticky Scroll Cards (Horizontal) */}
+          <div className="hidden md:block relative" style={{ minHeight: '80vh' }}>
             <div 
-              className="bg-white text-gray-900 rounded-2xl p-8 relative"
-              style={{
-                animationName: 'popIn',
-                animationDuration: '0.6s',
-                animationTimingFunction: 'ease-out',
-                animationFillMode: 'forwards',
-                animationDelay: '0s'
-              }}
+              className="sticky top-20 bg-white text-gray-900 rounded-2xl p-12 relative mb-4 shadow-lg"
+              style={{ zIndex: 10 }}
+            >
+              <div className="flex items-center gap-8">
+                <div className="w-3 h-3 bg-gray-900 rounded-full flex-shrink-0"></div>
+                <div className="flex-1">
+                  <h3 className="text-5xl font-bold text-blue-500 mb-4">DISCOVERY CALL</h3>
+                  <p className="text-gray-700 text-lg">
+                    We analyze your business and create a custom strategy tailored to your goals.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div 
+              className="sticky top-20 bg-gray-700 text-white rounded-2xl p-12 relative mb-4 shadow-lg"
+              style={{ zIndex: 20 }}
+            >
+              <div className="flex items-center gap-8">
+                <div className="w-3 h-3 bg-blue-500 rounded-full flex-shrink-0"></div>
+                <div className="flex-1">
+                  <h3 className="text-5xl font-bold text-blue-500 mb-4">SYSTEM BUILD</h3>
+                  <p className="text-gray-300 text-lg">We build your complete growth system with tracking, site, SEO, and ads.</p>
+                </div>
+              </div>
+            </div>
+
+            <div 
+              className="sticky top-20 bg-gray-400 text-gray-900 rounded-2xl p-12 relative shadow-lg"
+              style={{ zIndex: 30 }}
+            >
+              <div className="flex items-center gap-8">
+                <div className="w-3 h-3 bg-gray-900 rounded-full flex-shrink-0"></div>
+                <div className="flex-1">
+                  <h3 className="text-5xl font-bold text-blue-500 mb-4">ONGOING OPTIMIZATION</h3>
+                  <p className="text-gray-700 text-lg">We continuously monitor and scale to maximize performance.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile: Sticky Scroll Cards */}
+          <div className="md:hidden relative" style={{ minHeight: '80vh' }}>
+            <div 
+              className="sticky top-20 bg-white text-gray-900 rounded-2xl p-8 relative mb-4 shadow-lg"
+              style={{ zIndex: 10 }}
             >
               <div className="absolute top-6 left-6 w-2 h-2 bg-gray-900 rounded-full"></div>
               <div className="mt-12">
@@ -368,14 +407,8 @@ export default function HomePage() {
             </div>
 
             <div 
-              className="bg-gray-700 text-white rounded-2xl p-8 relative"
-              style={{
-                animationName: 'popIn',
-                animationDuration: '0.6s',
-                animationTimingFunction: 'ease-out',
-                animationFillMode: 'forwards',
-                animationDelay: '0.2s'
-              }}
+              className="sticky top-20 bg-gray-700 text-white rounded-2xl p-8 relative mb-4 shadow-lg"
+              style={{ zIndex: 20 }}
             >
               <div className="absolute top-6 left-6 w-2 h-2 bg-blue-500 rounded-full"></div>
               <div className="mt-12">
@@ -385,14 +418,8 @@ export default function HomePage() {
             </div>
 
             <div 
-              className="bg-gray-400 text-gray-900 rounded-2xl p-8 relative"
-              style={{
-                animationName: 'popIn',
-                animationDuration: '0.6s',
-                animationTimingFunction: 'ease-out',
-                animationFillMode: 'forwards',
-                animationDelay: '0.4s'
-              }}
+              className="sticky top-20 bg-gray-400 text-gray-900 rounded-2xl p-8 relative shadow-lg"
+              style={{ zIndex: 30 }}
             >
               <div className="absolute top-6 left-6 w-2 h-2 bg-gray-900 rounded-full"></div>
               <div className="mt-12">
