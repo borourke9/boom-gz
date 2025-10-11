@@ -160,11 +160,10 @@ export default function HomePage() {
           
           {/* NEXGEN Hero Image */}
           <div 
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-rise-in"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-fade-in-logo"
             style={{
               filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.4))',
-              mixBlendMode: 'overlay',
-              opacity: 0.95
+              mixBlendMode: 'overlay'
             }}
           >
             <img 
@@ -245,11 +244,10 @@ export default function HomePage() {
           
           {/* NEXGEN Hero Image */}
           <div 
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-rise-in"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-fade-in-logo"
             style={{
               filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.4))',
-              mixBlendMode: 'overlay',
-              opacity: 0.95
+              mixBlendMode: 'overlay'
             }}
           >
             <img 
@@ -350,7 +348,16 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white text-gray-900 rounded-2xl p-8 relative">
+            <div 
+              className="bg-white text-gray-900 rounded-2xl p-8 relative"
+              style={{
+                animationName: 'popIn',
+                animationDuration: '0.6s',
+                animationTimingFunction: 'ease-out',
+                animationFillMode: 'forwards',
+                animationDelay: '0s'
+              }}
+            >
               <div className="absolute top-6 left-6 w-2 h-2 bg-gray-900 rounded-full"></div>
               <div className="mt-12">
                 <h3 className="text-4xl font-bold text-blue-500 mb-4">DISCOVERY CALL</h3>
@@ -360,7 +367,16 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="bg-gray-700 text-white rounded-2xl p-8 relative">
+            <div 
+              className="bg-gray-700 text-white rounded-2xl p-8 relative"
+              style={{
+                animationName: 'popIn',
+                animationDuration: '0.6s',
+                animationTimingFunction: 'ease-out',
+                animationFillMode: 'forwards',
+                animationDelay: '0.2s'
+              }}
+            >
               <div className="absolute top-6 left-6 w-2 h-2 bg-blue-500 rounded-full"></div>
               <div className="mt-12">
                 <h3 className="text-4xl font-bold text-blue-500 mb-4">SYSTEM BUILD</h3>
@@ -368,7 +384,16 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="bg-gray-400 text-gray-900 rounded-2xl p-8 relative">
+            <div 
+              className="bg-gray-400 text-gray-900 rounded-2xl p-8 relative"
+              style={{
+                animationName: 'popIn',
+                animationDuration: '0.6s',
+                animationTimingFunction: 'ease-out',
+                animationFillMode: 'forwards',
+                animationDelay: '0.4s'
+              }}
+            >
               <div className="absolute top-6 left-6 w-2 h-2 bg-gray-900 rounded-full"></div>
               <div className="mt-12">
                 <h3 className="text-4xl font-bold text-blue-500 mb-4">ONGOING OPTIMIZATION</h3>

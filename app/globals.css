@@ -231,6 +231,20 @@ body {
   animation: riseIn 1s ease-out forwards;
 }
 
+/* Fade-in animation for hero logo */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.95;
+  }
+}
+
+.animate-fade-in-logo {
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
 /* Parallax performance optimizations */
 .parallax-section {
   transform: translateZ(0);
@@ -249,4 +263,16 @@ body {
   overflow-x: hidden;
   width: 100%;
   position: relative;
+}
+
+/* Pop-in animation for Our Process cards */
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
