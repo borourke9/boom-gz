@@ -137,7 +137,7 @@ export default function HomePage() {
 
 
       {/* Hero Section - Fixed Background with Parallax */}
-      <section className="fixed inset-0 z-10 flex items-center justify-center overflow-hidden">
+      <section className="fixed inset-0 z-10 flex items-center justify-center">
         {/* Background Image - Fixed */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -178,59 +178,12 @@ export default function HomePage() {
           </div>
 
           {/* Subtext + Buttons - Bottom-Left Corner */}
-          <div className="absolute bottom-8 left-4 right-4 md:bottom-8 md:left-6 md:right-auto flex flex-col items-start gap-2 md:gap-3 md:max-w-[85%] text-left">
+          <div className="absolute bottom-24 left-4 right-4 md:bottom-24 md:left-6 md:right-auto flex flex-col items-start gap-2 md:gap-3 md:max-w-[85%] text-left">
             {/* Subtext */}
             <p className="text-xs md:text-sm text-gray-200 opacity-90 font-light leading-relaxed">
               NEXGEN helps businesses grow with conversion-focused websites and campaigns that generate consistent results — closing the gap between clicks and customers.
             </p>
 
-            {/* Buttons */}
-            <div className="flex flex-col space-y-2 md:space-y-3 w-full mt-1 md:mt-2">
-              <button 
-                onClick={() => {
-                  const contactSection = document.getElementById('contact');
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }
-                }}
-                aria-label="Scroll to contact section to start a conversation"
-                className="px-4 py-2.5 md:px-6 md:py-3 border border-white/80 rounded-md text-white text-xs md:text-sm transition-all duration-300 hover:bg-white hover:text-black hover:border-white shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-                style={{ backdropFilter: 'blur(8px)' }}
-              >
-                Let's Talk
-              </button>
-              <button 
-                onClick={() => {
-                  const workSection = document.getElementById('work');
-                  if (workSection) {
-                    workSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    const workSection = document.getElementById('work');
-                    if (workSection) {
-                      workSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }
-                }}
-                aria-label="Scroll to work section to see our portfolio"
-                className="px-4 py-2.5 md:px-6 md:py-3 border border-white/80 rounded-md text-white text-xs md:text-sm transition-all duration-300 hover:bg-white hover:text-black hover:border-white shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-                style={{ backdropFilter: 'blur(8px)' }}
-              >
-                See Our Work
-              </button>
-            </div>
           </div>
         </div>
 
@@ -262,63 +215,98 @@ export default function HomePage() {
           </div>
 
           {/* Subtext + Buttons - Bottom-Left Corner */}
-          <div className="absolute bottom-12 left-12 flex flex-col items-start gap-4 max-w-md text-left">
+          <div className="absolute bottom-28 left-12 flex flex-col items-start gap-4 max-w-md text-left">
             {/* Subtext */}
             <p className="text-gray-200 text-sm sm:text-base md:text-lg opacity-90 font-light leading-relaxed">
               NEXGEN helps businesses grow with conversion-focused websites and campaigns that generate consistent results — closing the gap between clicks and customers.
             </p>
 
-            {/* Buttons */}
-            <div className="flex gap-4 mt-4">
-              <button 
-                onClick={() => {
-                  const contactSection = document.getElementById('contact');
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }
-                }}
-                aria-label="Scroll to contact section to start a conversation"
-                className="px-6 py-3 border border-white/80 rounded-md text-white text-sm sm:text-base transition-all duration-300 hover:bg-white hover:text-black hover:border-white shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-                style={{ backdropFilter: 'blur(8px)' }}
-              >
-                Let's Talk
-              </button>
-              <button 
-                onClick={() => {
-                  const workSection = document.getElementById('work');
-                  if (workSection) {
-                    workSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    const workSection = document.getElementById('work');
-                    if (workSection) {
-                      workSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }
-                }}
-                aria-label="Scroll to work section to see our portfolio"
-                className="px-6 py-3 border border-white/80 rounded-md text-white text-sm sm:text-base transition-all duration-300 hover:bg-white hover:text-black hover:border-white shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-                style={{ backdropFilter: 'blur(8px)' }}
-              >
-                See Our Work
-              </button>
-            </div>
           </div>
         </div>
 
       </section>
+
+      {/* Floating Action Buttons - Only visible on home page */}
+      <div 
+        className="fixed bottom-8 left-4 right-4 md:bottom-12 md:left-12 md:right-auto z-50 pointer-events-auto"
+        style={{
+          opacity: Math.max(0, 1 - scrollY / 300),
+          transform: `translateY(${Math.min(30, scrollY * 0.2)}px)`,
+          pointerEvents: scrollY > 300 ? 'none' : 'auto'
+        }}
+      >
+        {/* Mobile Buttons */}
+        <div className="flex flex-col space-y-2 md:hidden">
+          <button 
+            onClick={() => {
+              console.log('Mobile Let\'s Talk clicked');
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="px-4 py-2.5 border border-white/80 rounded-md text-white text-xs transition-all duration-300 hover:bg-white/20 hover:text-white hover:border-white/100 shadow-[0_0_15px_rgba(255,255,255,0.1)] cursor-pointer"
+            style={{ 
+              backdropFilter: 'blur(8px)',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)'
+            }}
+          >
+            Let's Talk
+          </button>
+          <button 
+            onClick={() => {
+              console.log('Mobile See Our Work clicked');
+              const workSection = document.getElementById('work');
+              if (workSection) {
+                workSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="px-4 py-2.5 border border-white/80 rounded-md text-white text-xs transition-all duration-300 hover:bg-white/20 hover:text-white hover:border-white/100 shadow-[0_0_15px_rgba(255,255,255,0.1)] cursor-pointer"
+            style={{ 
+              backdropFilter: 'blur(8px)',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)'
+            }}
+          >
+            See Our Work
+          </button>
+        </div>
+
+        {/* Desktop Buttons */}
+        <div className="hidden md:flex gap-4">
+          <button 
+            onClick={() => {
+              console.log('Desktop Let\'s Talk clicked');
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="px-6 py-3 border border-white/80 rounded-md text-white text-sm sm:text-base transition-all duration-300 hover:bg-white/20 hover:text-white hover:border-white/100 shadow-[0_0_15px_rgba(255,255,255,0.1)] cursor-pointer"
+            style={{ 
+              backdropFilter: 'blur(8px)',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)'
+            }}
+          >
+            Let's Talk
+          </button>
+          <button 
+            onClick={() => {
+              console.log('Desktop See Our Work clicked');
+              const workSection = document.getElementById('work');
+              if (workSection) {
+                workSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="px-6 py-3 border border-white/80 rounded-md text-white text-sm sm:text-base transition-all duration-300 hover:bg-white/20 hover:text-white hover:border-white/100 shadow-[0_0_15px_rgba(255,255,255,0.1)] cursor-pointer"
+            style={{ 
+              backdropFilter: 'blur(8px)',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)'
+            }}
+          >
+            See Our Work
+          </button>
+        </div>
+      </div>
 
       {/* Parallax Spacer - Creates scroll space */}
       <div className="relative z-20 h-screen"></div>
@@ -475,14 +463,14 @@ export default function HomePage() {
       </section>
 
             {/* Our Solutions Section */}
-      <section id="solutions" className="relative mx-auto mt-0 mb-0 max-w-7xl px-4 pt-24 pb-0">
+      <section id="solutions" className="relative w-full mt-0 mb-0 pt-24 pb-0">
         {/* White Backdrop */}
-        <div className="absolute inset-0 -m-4 bg-white rounded-3xl shadow-lg"></div>
+        <div className="absolute inset-0 bg-white"></div>
         
         {/* Placeholder Backdrop */}
-        <div className="absolute inset-0 -m-6 bg-gray-100 rounded-3xl -z-10"></div>
+        <div className="absolute inset-0 bg-gray-100 -z-10"></div>
         {/* Section Header */}
-        <div className="relative z-10 text-center mb-12">
+        <div className="relative z-10 text-center mb-12 px-4">
           <p className="mb-2 text-xs tracking-[.2em] uppercase text-black/40">What We Do</p>
           <h2 className="text-5xl md:text-6xl font-black -tracking-[0.02em] leading-[0.95] text-gray-900" style={{ fontFamily: "Inter Tight, sans-serif" }}>
             OUR SOLUTIONS
@@ -490,7 +478,7 @@ export default function HomePage() {
         </div>
 
         {/* Large Video Section */}
-        <div className="relative z-10 mb-16">
+        <div className="relative z-10 mb-16 px-4">
           <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-blue-600/8 via-blue-500/6 to-blue-400/4 p-8">
             <div className="relative rounded-2xl overflow-hidden">
               <div className="relative pt-[56.25%]">
@@ -503,6 +491,50 @@ export default function HomePage() {
                   title="NEXGEN Solutions Video"
                 />
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Services Icons Section */}
+        <div className="relative z-10 mb-16 px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            {/* We Make Sites */}
+            <div className="text-center group">
+              <div className="mb-6 flex justify-center">
+                <div className="w-20 h-20 bg-black rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  </svg>
+                </div>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">We Make Sites</h3>
+              <p className="text-gray-600 text-sm">Conversion-focused websites that turn visitors into customers</p>
+            </div>
+
+            {/* Lead Generation Tools */}
+            <div className="text-center group">
+              <div className="mb-6 flex justify-center">
+                <div className="w-20 h-20 bg-black rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Lead Generation Tools</h3>
+              <p className="text-gray-600 text-sm">Smart systems that capture and nurture leads automatically</p>
+            </div>
+
+            {/* Ads */}
+            <div className="text-center group">
+              <div className="mb-6 flex justify-center">
+                <div className="w-20 h-20 bg-black rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                  </svg>
+                </div>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Ads</h3>
+              <p className="text-gray-600 text-sm">Targeted campaigns that drive qualified traffic to your business</p>
             </div>
           </div>
         </div>
